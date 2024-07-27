@@ -4,19 +4,32 @@
  */
 package com.Login;
 
+import java.applet.AudioClip;
+
 /**
  *
- * @author user
+ * @author Daniusw
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+        private AudioClip sound;
+
     public Login() {
         initComponents();
+        playSoundLogin();
     }
-
+    
+    //Sonido
+    private void playSoundLogin() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/musicadeEsperaxd.wav"));
+        sound.play();
+    }
+    private void stopSound() {
+        if (sound != null) {
+        sound.stop();
+        }
+    } 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -287,12 +300,14 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRegistrarUsuarioActionPerformed
+        stopSound();
         com.confirmacion.confirmacion newConfirmacion = new com.confirmacion.confirmacion();
         newConfirmacion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botRegistrarUsuarioActionPerformed
 
     private void botRegresarCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRegresarCreateAccountActionPerformed
+        stopSound();
         com.Juego.menu newMenu = new com.Juego.menu();
         newMenu.setVisible(true);
         this.dispose();
