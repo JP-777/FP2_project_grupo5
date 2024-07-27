@@ -33,9 +33,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botPrinJugar = new javax.swing.JButton();
+        botPrinEstadis = new javax.swing.JButton();
+        botPrinDudas = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        botPrinCrearAccount = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 600));
@@ -59,7 +61,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel3.setForeground(new java.awt.Color(255, 213, 129));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/RECUERDAME (9).png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 100, 170));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 100, 160));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/RECUERDAME (11).png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 300, 100));
@@ -67,23 +69,48 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logo1Menu.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 213, 129));
-        jButton1.setForeground(new java.awt.Color(255, 213, 129));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/RECUERDAME (12).png"))); // NOI18N
-        jButton1.setToolTipText("");
-        jButton1.setBorderPainted(false);
-        jButton1.setDefaultCapable(false);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 240, 80));
+        botPrinJugar.setBackground(new java.awt.Color(255, 213, 129));
+        botPrinJugar.setForeground(new java.awt.Color(255, 213, 129));
+        botPrinJugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/RECUERDAME (12).png"))); // NOI18N
+        botPrinJugar.setToolTipText("");
+        botPrinJugar.setBorderPainted(false);
+        botPrinJugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botPrinJugar.setDefaultCapable(false);
+        botPrinJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPrinJugarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botPrinJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 240, 80));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/RECUERDAME (13).png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 340, 200, 100));
+        botPrinEstadis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/RECUERDAME (13).png"))); // NOI18N
+        botPrinEstadis.setBorderPainted(false);
+        botPrinEstadis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botPrinEstadis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPrinEstadisActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botPrinEstadis, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 340, 190, 100));
 
-        jButton3.setBackground(new java.awt.Color(255, 213, 129));
-        jButton3.setForeground(new java.awt.Color(255, 213, 129));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/RECUERDAME (14).png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 200, 100));
+        botPrinDudas.setBackground(new java.awt.Color(255, 213, 129));
+        botPrinDudas.setForeground(new java.awt.Color(255, 213, 129));
+        botPrinDudas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/RECUERDAME (14).png"))); // NOI18N
+        botPrinDudas.setBorderPainted(false);
+        botPrinDudas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(botPrinDudas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 200, 100));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/menuPrinCrearAccount.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 240, 70));
+
+        botPrinCrearAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/menuBotPrinCrearAccount).png"))); // NOI18N
+        botPrinCrearAccount.setBorder(null);
+        botPrinCrearAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPrinCrearAccountActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botPrinCrearAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 250, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +125,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botPrinJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPrinJugarActionPerformed
+        
+    }//GEN-LAST:event_botPrinJugarActionPerformed
+
+    private void botPrinEstadisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPrinEstadisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botPrinEstadisActionPerformed
+
+    private void botPrinCrearAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPrinCrearAccountActionPerformed
+        pruebaVent newframe = new pruebaVent();
+        newframe.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botPrinCrearAccountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,10 +176,12 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botPrinCrearAccount;
+    private javax.swing.JButton botPrinDudas;
+    private javax.swing.JButton botPrinEstadis;
+    private javax.swing.JButton botPrinJugar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
