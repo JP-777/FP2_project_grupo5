@@ -38,7 +38,6 @@ public class Logros extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 550));
         setMinimumSize(new java.awt.Dimension(1000, 550));
-        setPreferredSize(new java.awt.Dimension(1000, 550));
 
         jPanel1.setBackground(new java.awt.Color(255, 213, 129));
 
@@ -47,6 +46,11 @@ public class Logros extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logrosRegresar.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logrosMensajitos.png"))); // NOI18N
 
@@ -92,6 +96,12 @@ public class Logros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        com.Juego.menu newMenu = new com.Juego.menu();
+        newMenu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
