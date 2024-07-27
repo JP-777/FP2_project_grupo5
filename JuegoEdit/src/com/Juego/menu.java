@@ -1,20 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.Juego;
+
+import java.applet.AudioClip;
 
 /**
  *
- * @author user
+ * @author Daniuws
  */
 public class menu extends javax.swing.JFrame {
+
+        private AudioClip sound;
 
     /**
      * Creates new form menu
      */
     public menu() {
         initComponents();
+        playSound();
+    }
+    
+    private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/audioMusic.wav"));
+        sound.play();
     }
 
     /**
