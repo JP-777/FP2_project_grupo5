@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        botRegistrarUsuario = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         passwordPart = new javax.swing.JPasswordField();
         jSeparator3 = new javax.swing.JSeparator();
@@ -79,16 +79,16 @@ public class Login extends javax.swing.JFrame {
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(200, 81, 3));
-        jButton1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("LOGIN");
-        jButton1.setToolTipText("");
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botRegistrarUsuario.setBackground(new java.awt.Color(200, 81, 3));
+        botRegistrarUsuario.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        botRegistrarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        botRegistrarUsuario.setText("LOGIN");
+        botRegistrarUsuario.setToolTipText("");
+        botRegistrarUsuario.setBorder(null);
+        botRegistrarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botRegistrarUsuarioActionPerformed(evt);
             }
         });
 
@@ -163,7 +163,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(edadPart, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(botRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -196,7 +196,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -286,9 +286,11 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //agregar evento de guardar datos
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRegistrarUsuarioActionPerformed
+        com.confirmacion.confirmacion newConfirmacion = new com.confirmacion.confirmacion();
+        newConfirmacion.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botRegistrarUsuarioActionPerformed
 
     private void botRegresarCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRegresarCreateAccountActionPerformed
         com.Juego.menu newMenu = new com.Juego.menu();
@@ -344,9 +346,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botRegistrarUsuario;
     private javax.swing.JButton botRegresarCreateAccount;
     private javax.swing.JComboBox<String> edadPart;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

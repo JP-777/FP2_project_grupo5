@@ -30,7 +30,7 @@ public class ingresar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        botStartPlay = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jTextField1 = new javax.swing.JTextField();
@@ -52,15 +52,15 @@ public class ingresar extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 213, 129));
 
-        jButton1.setBackground(new java.awt.Color(200, 81, 3));
-        jButton1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("START");
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botStartPlay.setBackground(new java.awt.Color(200, 81, 3));
+        botStartPlay.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        botStartPlay.setForeground(new java.awt.Color(255, 255, 255));
+        botStartPlay.setText("START");
+        botStartPlay.setBorder(null);
+        botStartPlay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botStartPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botStartPlayActionPerformed(evt);
             }
         });
 
@@ -100,7 +100,7 @@ public class ingresar extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(96, 96, 96)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(botStartPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(19, 19, 19)
                             .addComponent(jLabel6)))
@@ -127,7 +127,7 @@ public class ingresar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botStartPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -229,9 +229,9 @@ public class ingresar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botStartPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botStartPlayActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botStartPlayActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         com.Juego.menu newReturnMenu = new com.Juego.menu();
@@ -275,7 +275,7 @@ public class ingresar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botStartPlay;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

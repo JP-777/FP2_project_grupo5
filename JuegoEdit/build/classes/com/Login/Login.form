@@ -167,7 +167,7 @@
                                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="edadPart" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
                                       <Component id="jSeparator3" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
-                                      <Component id="jButton1" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                      <Component id="botRegistrarUsuario" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -205,7 +205,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator3" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="botRegistrarUsuario" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace pref="23" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -259,7 +259,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="botRegistrarUsuario">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="3" green="51" red="c8" type="rgb"/>
@@ -280,7 +280,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botRegistrarUsuarioActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
