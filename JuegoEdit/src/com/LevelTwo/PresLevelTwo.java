@@ -1,7 +1,6 @@
 
 package com.LevelTwo;
 
-import com.LevelOne.LevelOne;
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,7 +38,7 @@ public class PresLevelTwo extends javax.swing.JFrame {
 
     private void moveToNextFrame() {
         dispose(); // Cierra la ventana actual
-        new LevelTwo().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        new LevelTwo().setVisible(true); // Abre la siguiente ventana ()
     }
 
     private void playSound() {

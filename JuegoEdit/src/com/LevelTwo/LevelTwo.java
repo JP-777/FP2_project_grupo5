@@ -4,19 +4,136 @@
  */
 package com.LevelTwo;
 
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
- * @author user
+ * @author Daniusw
  */
 public class LevelTwo extends javax.swing.JFrame {
-
-    /**
-     * Creates new form LevelTwo
-     */
+    
+    //agregando
+    private static final int DELAY = 7000; // Duración en milisegundos 
+    private Timer timer;
+    
+    private AudioClip sound; // Variable para el audio
+    
+    // Variables para el movimiento del jLabel Title
+    private Timer moveTimerTitle;
+    private int moveDirectionTitle = 1;
+    private static final int MOVE_AMOUNT_TITLE = 4; // Cantidad de movimiento en píxeles
+    private static final int MOVE_DELAY_TITLE = 50; // Retardo en milisegundos para el movimiento suave
+    private static final int MOVE_LIMIT_TITLE = 140; // Límite de movimiento desde el borde del jPanel2
+    
+    // Variables para el movimiento de los TarColor
+    private Timer moveTimerAnimals;
+    private int moveDirectionPerro = 1;
+    private int moveDirectionGato = -1;
+    private int moveDirectionCerdo = 1;
+    private int moveDirectionLeon= -1;
+    private static final int MOVE_AMOUNT = 4; // Cantidad de movimiento en píxeles
+    private static final int MOVE_DELAY = 50; // Retardo en milisegundos para el movimiento suave
+    private static final int MOVE_LIMIT = 45; // Límite de movimiento desde el borde del jPanel2
+    
+    
     public LevelTwo() {
         initComponents();
+        playSound();
+        startTimer();
+        startMoveTimerTitle();
+        startMoveTimerAnimals();
     }
+    
+    
+        // Movimiento de jLabel Title
+        private void startMoveTimerTitle() {
+            moveTimerTitle = new Timer(MOVE_DELAY_TITLE, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int x = Title.getLocation().x;
+                    int y = Title.getLocation().y;
+                    x += MOVE_AMOUNT_TITLE * moveDirectionTitle;
 
+                    // Cambia la dirección si alcanza los límites
+                    if (x < MOVE_LIMIT_TITLE || x + Title.getWidth() > jPanel2.getWidth() - MOVE_LIMIT_TITLE) {
+                        moveDirectionTitle *= -1;
+                        x += MOVE_AMOUNT_TITLE * moveDirectionTitle;
+                    }
+                    Title.setLocation(x, y);
+                }
+            });
+            moveTimerTitle.start(); // Inicia el temporizador de movimiento
+        }
+        
+        // Movimiento de los TarColor
+        private void startMoveTimerAnimals() {
+            moveTimerAnimals = new Timer(MOVE_DELAY, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    moveLabel(TarAnimPerro, moveDirectionPerro);
+                    moveLabel(TarAnimGato, moveDirectionGato);
+                    moveLabel(TarAnimCerdo, moveDirectionCerdo);
+                    moveLabel(TarAnimLeon, moveDirectionLeon);
+                }
+            });
+            moveTimerAnimals.start(); // Inicia el temporizador de movimiento
+        }
+
+            private void moveLabel(javax.swing.JLabel label, int direction) {
+            int x = label.getLocation().x;
+            int y = label.getLocation().y;
+            y += MOVE_AMOUNT * direction;
+
+            // Cambia la dirección si alcanza los límites
+            if (y < MOVE_LIMIT || y + label.getHeight() > jPanel2.getHeight() - MOVE_LIMIT) {
+                if (label == TarAnimPerro) {
+                    moveDirectionPerro *= -1;
+                } else if (label == TarAnimGato) {
+                    moveDirectionGato *= -1;
+                } else if (label == TarAnimCerdo) {
+                    moveDirectionCerdo *= -1;
+                } else if (label == TarAnimLeon) {
+                    moveDirectionLeon *= -1;
+                }
+            }
+            label.setLocation(x, y);
+           }
+    
+    
+    //agregado
+        private void startTimer() {
+        timer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop(); // Detiene el temporizador
+                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+            }
+        });
+        timer.setRepeats(false); // El temporizador no se repite
+        timer.start(); // Inicia el temporizador
+        }
+        
+        
+        private void moveToNextFrame() {
+            stopSound(); // Detiene el audio antes de cerrar la ventana
+            dispose(); // Cierra la ventana actual
+            new cartVoltAveriguarTwo().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        }
+
+        private void playSound() {
+            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
+            sound.play();
+        }
+
+        private void stopSound() {
+            if (sound != null) {
+                sound.stop();
+            }
+        }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,13 +143,42 @@ public class LevelTwo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        InfTime = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        InfTime2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        TarAnimPerro = new javax.swing.JLabel();
+        TarAnimGato = new javax.swing.JLabel();
+        TarAnimCerdo = new javax.swing.JLabel();
+        TarAnimLeon = new javax.swing.JLabel();
+        Title = new javax.swing.JLabel();
+
+        jPanel4.setBackground(new java.awt.Color(200, 81, 3));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+
+        InfTime.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        InfTime.setForeground(new java.awt.Color(255, 255, 255));
+        InfTime.setText("00:07");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(InfTime)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfTime, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 550));
@@ -41,19 +187,47 @@ public class LevelTwo extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 213, 129));
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 550));
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 550));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(200, 81, 3));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel5.setForeground(new java.awt.Color(255, 255, 255));
+
+        InfTime2.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        InfTime2.setForeground(new java.awt.Color(255, 255, 255));
+        InfTime2.setText("00:07");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(InfTime2)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 3, true));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botPerro.png"))); // NOI18N
+        TarAnimPerro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botPerro.png"))); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botCat.png"))); // NOI18N
+        TarAnimGato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botCat.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botPig.png"))); // NOI18N
+        TarAnimCerdo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botPig.png"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botLion.png"))); // NOI18N
+        TarAnimLeon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botLion.png"))); // NOI18N
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/TitleLevelTwo.png"))); // NOI18N
+        Title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/TitleLevelTwo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -62,48 +236,35 @@ public class LevelTwo extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel2)
+                        .addGap(43, 43, 43)
+                        .addComponent(TarAnimPerro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TarAnimGato)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addComponent(TarAnimCerdo)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4))
+                        .addComponent(TarAnimLeon))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(180, 180, 180)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 63, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TarAnimPerro, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TarAnimCerdo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(TarAnimLeon, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(TarAnimGato, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 390));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,7 +274,7 @@ public class LevelTwo extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
 
         pack();
@@ -155,12 +316,16 @@ public class LevelTwo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel InfTime;
+    private javax.swing.JLabel InfTime2;
+    private javax.swing.JLabel TarAnimCerdo;
+    private javax.swing.JLabel TarAnimGato;
+    private javax.swing.JLabel TarAnimLeon;
+    private javax.swing.JLabel TarAnimPerro;
+    private javax.swing.JLabel Title;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,6 @@
  */
 package com.LevelThree;
 
-import com.LevelTwo.LevelTwo;
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,7 +42,7 @@ public class PressLevelThree extends javax.swing.JFrame {
 
     private void moveToNextFrame() {
         dispose(); // Cierra la ventana actual
-        new LevelThree().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        new LevelThree().setVisible(true); // Abre la siguiente ventana ()
     }
 
     private void playSound() {
@@ -100,7 +99,7 @@ public class PressLevelThree extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/mascotitaLevelTRES.gif"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 448, 267));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/mensaleLevelTres.gif"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/TextLevelTwo.gif"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 506, 272));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

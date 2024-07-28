@@ -4,19 +4,138 @@
  */
 package com.LevelThree;
 
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
- * @author user
+ * @author Daniusw
  */
 public class LevelThree extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LevelThree
-     */
+    //agregando
+    private static final int DELAY = 7000; // Duración en milisegundos 
+    private Timer timer;
+    
+    private AudioClip sound; // Variable para el audio
+    
+    // Variables para el movimiento del jLabel Title
+    private Timer moveTimerTitleNumbers;
+    private int moveDirectionTitleNumbers = 1;
+    private static final int MOVE_AMOUNT_TITLE_NUMBERS = 4; // Cantidad de movimiento en píxeles
+    private static final int MOVE_DELAY_TITLE_NUMBERS = 50; // Retardo en milisegundos para el movimiento suave
+    private static final int MOVE_LIMIT_TITLE_NUMBERS = 140; // Límite de movimiento desde el borde del jPanel2
+    
+    // Variables para el movimiento de los TarColor
+    private Timer moveTimerNumber;
+    private int moveDirectionOne = -1;
+    private int moveDirectionTwo = -1;
+    private int moveDirectionThree = 1;
+    private int moveDirectionFour= 1;
+    private static final int MOVE_AMOUNT = 4; // Cantidad de movimiento en píxeles
+    private static final int MOVE_DELAY = 50; // Retardo en milisegundos para el movimiento suave
+    private static final int MOVE_LIMIT = 38; // Límite de movimiento desde el borde del jPanel2
+    
+    
     public LevelThree() {
         initComponents();
+        playSound();
+        startTimer();
+        startMoveTimerNumber();
+        startMoveTimerTitleNumber();
+    }
+    
+
+    /// Movimiento de jLabel Title
+    private void startMoveTimerTitleNumber() {
+        moveTimerTitleNumbers = new Timer(MOVE_DELAY_TITLE_NUMBERS, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int x = TitleNumbers.getLocation().x;
+                int y = TitleNumbers.getLocation().y;
+                x += MOVE_AMOUNT_TITLE_NUMBERS * moveDirectionTitleNumbers;
+
+                // Cambia la dirección si alcanza los límites
+                if (x < MOVE_LIMIT_TITLE_NUMBERS || x + TitleNumbers.getWidth() > jPanel2.getWidth() - MOVE_LIMIT_TITLE_NUMBERS) {
+                    moveDirectionTitleNumbers *= -1;
+                    x += MOVE_AMOUNT_TITLE_NUMBERS * moveDirectionTitleNumbers;
+                }
+                TitleNumbers.setLocation(x, y);
+            }
+        });
+        moveTimerTitleNumbers.start(); // Inicia el temporizador de movimiento
     }
 
+    // Movimiento de los TarNumber
+    private void startMoveTimerNumber() {
+        moveTimerNumber = new Timer(MOVE_DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                moveLabel(TarNumberOne, moveDirectionOne);
+                moveLabel(TarNumberTwo, moveDirectionTwo);
+                moveLabel(TarNumberThree, moveDirectionThree);
+                moveLabel(TarNumberFour, moveDirectionFour);
+            }
+        });
+        moveTimerNumber.start(); // Inicia el temporizador de movimiento
+    }
+
+    private void moveLabel(javax.swing.JLabel label, int direction) {
+        int x = label.getLocation().x;
+        int y = label.getLocation().y;
+        y += MOVE_AMOUNT * direction;
+
+        // Cambia la dirección si alcanza los límites
+        if (y < MOVE_LIMIT || y + label.getHeight() > jPanel2.getHeight() - MOVE_LIMIT) {
+            if (label == TarNumberOne) {
+                moveDirectionOne *= -1;
+            } else if (label == TarNumberTwo) {
+                moveDirectionTwo *= -1;
+            } else if (label == TarNumberThree) {
+                moveDirectionThree *= -1;
+            } else if (label == TarNumberFour) {
+                moveDirectionFour *= -1;
+            }
+        }
+        label.setLocation(x, y);
+    }
+
+    // Inicializar el temporizador principal
+    private void startTimer() {
+        timer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop(); // Detiene el temporizador
+                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+            }
+        });
+        timer.setRepeats(false); // El temporizador no se repite
+        timer.start(); // Inicia el temporizador
+    }
+
+    // Mover a la siguiente ventana
+    private void moveToNextFrame() {
+        stopSound(); // Detiene el audio antes de cerrar la ventana
+        dispose(); // Cierra la ventana actual
+        new cartVoltAveriguarThree().setVisible(true); // Abre la siguiente ventana
+    }
+
+    // Reproducir sonido
+    private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
+        sound.play();
+    }
+
+    // Detener sonido
+    private void stopSound() {
+        if (sound != null) {
+            sound.stop();
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,96 +146,105 @@ public class LevelThree extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        InfTime3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        TitleNumbers = new javax.swing.JLabel();
+        TarNumberOne = new javax.swing.JLabel();
+        TarNumberTwo = new javax.swing.JLabel();
+        TarNumberThree = new javax.swing.JLabel();
+        TarNumberFour = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 550));
         setMinimumSize(new java.awt.Dimension(1000, 550));
-        setPreferredSize(new java.awt.Dimension(1000, 550));
 
         jPanel1.setBackground(new java.awt.Color(255, 213, 129));
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 550));
+        jPanel1.setMinimumSize(new java.awt.Dimension(400, 550));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 550));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(200, 81, 3));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel5.setForeground(new java.awt.Color(255, 255, 255));
+
+        InfTime3.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        InfTime3.setForeground(new java.awt.Color(255, 255, 255));
+        InfTime3.setText("00:07");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(InfTime3)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfTime3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 3, true));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botOne.png"))); // NOI18N
-        jButton1.setBorder(null);
+        TitleNumbers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/TtitleLevelThree.png"))); // NOI18N
+        TitleNumbers.setPreferredSize(new java.awt.Dimension(520, 52));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botTwo.png"))); // NOI18N
-        jButton2.setBorder(null);
+        TarNumberOne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botOne.png"))); // NOI18N
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botThree.png"))); // NOI18N
-        jButton3.setToolTipText("");
-        jButton3.setBorder(null);
+        TarNumberTwo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botFour.png"))); // NOI18N
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botFour.png"))); // NOI18N
-        jButton4.setBorder(null);
+        TarNumberThree.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botTwo.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/TtitleLevelThree.png"))); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(520, 52));
+        TarNumberFour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botThree.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jButton1)
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton2)
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(166, 166, 166)
+                .addComponent(TitleNumbers, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(197, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TarNumberOne, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TarNumberThree, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TarNumberFour, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TarNumberTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TitleNumbers, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 272, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55))
+                    .addComponent(TarNumberOne, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TarNumberFour, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TarNumberTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TarNumberThree, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
-        );
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 880, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,12 +290,14 @@ public class LevelThree extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel InfTime3;
+    private javax.swing.JLabel TarNumberFour;
+    private javax.swing.JLabel TarNumberOne;
+    private javax.swing.JLabel TarNumberThree;
+    private javax.swing.JLabel TarNumberTwo;
+    private javax.swing.JLabel TitleNumbers;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }

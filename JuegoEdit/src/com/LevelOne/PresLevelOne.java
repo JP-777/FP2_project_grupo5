@@ -41,7 +41,7 @@ public class PresLevelOne extends javax.swing.JFrame {
 
     private void moveToNextFrame() {
         dispose(); // Cierra la ventana actual
-        new LevelOne().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        new LevelOne().setVisible(true); // Abre la siguiente ventana ()
     }
 
     private void playSound() {

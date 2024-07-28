@@ -8,7 +8,8 @@ import javax.swing.Timer;
 
 /**
  *
- * @author user
+ * @author Daniusw
+ *
  */
 public class LevelOne extends javax.swing.JFrame {
 
@@ -185,7 +186,7 @@ public class LevelOne extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, 170, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 170, 60));
 
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 2, true));
