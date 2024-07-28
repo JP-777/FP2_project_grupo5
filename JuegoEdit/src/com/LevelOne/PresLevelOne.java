@@ -70,7 +70,6 @@ public class PresLevelOne extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 550));
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 113));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/confirmacion/confirmacion.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/ingreso/ingresar.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/LevelOne/PresLevelOne.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/LevelOne/LevelOne.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/LevelOne/NextFrame.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/Juego/menu.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/Juego/Empiezo.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/principal/Principal.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/FP2_project_grupo5/JuegoEdit/src/com/LevelOne/cartVoltAveriguar.java</file>
         </group>
     </open-files>
 </project-private>
