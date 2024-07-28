@@ -4,19 +4,29 @@
  */
 package com.Logros;
 
+import java.applet.AudioClip;
+
 /**
- *
- * @author user
+ * @author Daniusw
  */
 public class Logros extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Logros
-     */
+    private AudioClip sound;
+    
     public Logros() {
         initComponents();
+        playSoundLogros();
     }
 
+    private void playSoundLogros() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/EsperaMusica_1.wav"));
+        sound.play();
+    }
+    private void stopSound() {
+        if (sound != null) {
+        sound.stop();
+        }
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,6 +108,7 @@ public class Logros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        stopSound();
         com.Juego.menu newMenu = new com.Juego.menu();
         newMenu.setVisible(true);
         this.dispose();

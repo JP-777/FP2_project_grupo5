@@ -28,7 +28,8 @@ public class confirmacion extends javax.swing.JFrame {
     private void stopSound() {
         if (sound != null) {
         sound.stop();
-        }
+     
+       }
     } 
     
     /**
