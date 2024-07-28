@@ -154,6 +154,7 @@ public class LevelTwo extends javax.swing.JFrame {
         TarAnimCerdo = new javax.swing.JLabel();
         TarAnimLeon = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel4.setBackground(new java.awt.Color(200, 81, 3));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -266,6 +267,9 @@ public class LevelTwo extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 390));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/BarraProgeso2.gif"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -323,6 +327,7 @@ public class LevelTwo extends javax.swing.JFrame {
     private javax.swing.JLabel TarAnimLeon;
     private javax.swing.JLabel TarAnimPerro;
     private javax.swing.JLabel Title;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

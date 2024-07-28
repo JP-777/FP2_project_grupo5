@@ -154,12 +154,13 @@ public class LevelThree extends javax.swing.JFrame {
         TarNumberTwo = new javax.swing.JLabel();
         TarNumberThree = new javax.swing.JLabel();
         TarNumberFour = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 550));
         setMinimumSize(new java.awt.Dimension(1000, 550));
 
-        jPanel1.setBackground(new java.awt.Color(255, 213, 129));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 113));
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 550));
         jPanel1.setMinimumSize(new java.awt.Dimension(400, 550));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 550));
@@ -240,6 +241,9 @@ public class LevelThree extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 880, 370));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/BarraProgreso3 (1).gif"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -296,6 +300,7 @@ public class LevelThree extends javax.swing.JFrame {
     private javax.swing.JLabel TarNumberThree;
     private javax.swing.JLabel TarNumberTwo;
     private javax.swing.JLabel TitleNumbers;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
