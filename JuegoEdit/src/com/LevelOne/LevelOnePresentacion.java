@@ -1,22 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.LevelOne;
+
+import java.applet.AudioClip;
 
 /**
  *
- * @author user
+ * @author Daniusw
  */
 public class LevelOnePresentacion extends javax.swing.JFrame {
+    
+        private AudioClip sound;
 
-    /**
-     * Creates new form LevelOnePresentacion
-     */
+    
     public LevelOnePresentacion() {
         initComponents();
+        playSoundAtempt();
     }
 
+    private void playSoundAtempt() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/MenuMusica.wav"));
+        sound.play();
+    }
+    private void stopSound() {
+        if (sound != null) {
+        sound.stop();
+        }
+    } 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,31 +37,77 @@ public class LevelOnePresentacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        botAvanzar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 550));
         setMinimumSize(new java.awt.Dimension(1000, 550));
 
-        jPanel1.setBackground(new java.awt.Color(255, 213, 129));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 113));
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 550));
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 550));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+        jPanel2.setBackground(new java.awt.Color(255, 204, 113));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 550, Short.MAX_VALUE)
         );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 550));
+
+        jLabel1.setBackground(new java.awt.Color(255, 204, 113));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/LevelOnePresAnimacion1.gif"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 526, 322));
+
+        botAvanzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/LevelOneBotAvanzar (1).gif"))); // NOI18N
+        botAvanzar.setBorder(null);
+        botAvanzar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botAvanzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botAvanzarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botAvanzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 270, 160));
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 113));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 130, 310));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/LevelOnePresAnimacion2 (1).gif"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 570, 230));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/LevelOnePresAnimacion3.gif"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 380, 280));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,6 +116,13 @@ public class LevelOnePresentacion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botAvanzarActionPerformed
+        stopSound();
+        com.LevelOne.PresLevelOne newRegresarMenu = new  com.LevelOne.PresLevelOne();
+        newRegresarMenu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botAvanzarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +160,12 @@ public class LevelOnePresentacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botAvanzar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

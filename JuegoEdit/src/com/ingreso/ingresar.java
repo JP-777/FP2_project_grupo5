@@ -245,7 +245,10 @@ public class ingresar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botStartPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botStartPlayActionPerformed
-        // TODO add your handling code here:
+        stopSound();
+        com.LevelOne.LevelOnePresentacion newRegresarMenu = new  com.LevelOne.LevelOnePresentacion();
+        newRegresarMenu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botStartPlayActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

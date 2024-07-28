@@ -4,18 +4,58 @@
  */
 package com.LevelOne;
 
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author user
  */
 public class LevelOne extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LevelOne
-     */
+    private static final int DELAY = 7000; // Duración en milisegundos 
+    private Timer timer;
+    
+    private AudioClip sound; // Variable para el audio
+    
     public LevelOne() {
         initComponents();
+        startTimer();
+        playSound(); // Reproduce el audio al iniciar
     }
+    
+    //agregado
+        private void startTimer() {
+        timer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop(); // Detiene el temporizador
+                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+            }
+        });
+        timer.setRepeats(false); // El temporizador no se repite
+        timer.start(); // Inicia el temporizador
+        }
+
+        private void moveToNextFrame() {
+            stopSound(); // Detiene el audio antes de cerrar la ventana
+            dispose(); // Cierra la ventana actual
+            new NextFrame().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        }
+
+        private void playSound() {
+            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
+            sound.play();
+        }
+
+        private void stopSound() {
+            if (sound != null) {
+                sound.stop();
+            }
+        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
