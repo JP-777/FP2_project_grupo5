@@ -4,19 +4,81 @@
  */
 package com.LevelOne;
 
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author user
  */
 public class cartVoltAveriguar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form cartVoltAveriguar
-     */
+    //agregando
+    private static final int DELAY = 15000; // Duración en milisegundos 
+    private Timer timer;
+    
+    private AudioClip sound; // Variable para el audio
+    // Variable para el temporizador del tiempo restante
+    private Timer countdownTimer;
+    private int remainingTime = DELAY / 1000; // Tiempo restante en segundos
+    
     public cartVoltAveriguar() {
         initComponents();
+        startTimer();
+        startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva    }
     }
+    
+    private void startCountdownTimer() {
+        countdownTimer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (remainingTime > 0) {
+                    remainingTime--;
+                    int minutes = remainingTime / 60;
+                    int seconds = remainingTime % 60;
+                    InfTime.setText(String.format("%02d:%02d", minutes, seconds));
+                } else {
+                    countdownTimer.stop();
+                }
+            }
+        });
+        countdownTimer.start();
+    }
+    
+    
+    //agregado
+        private void startTimer() {
+        timer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop(); // Detiene el temporizador
+                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+            }
+        });
+        timer.setRepeats(false); // El temporizador no se repite
+        timer.start(); // Inicia el temporizador
+        }
+        
+        
+        private void moveToNextFrame() {
+            stopSound(); // Detiene el audio antes de cerrar la ventana
+            dispose(); // Cierra la ventana actual
+            new NextFrame().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        }
 
+        private void playSound() {
+            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
+            sound.play();
+        }
+
+        private void stopSound() {
+            if (sound != null) {
+                sound.stop();
+            }
+        }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,11 +89,61 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        InfTimeCuestios = new javax.swing.JPanel();
+        InfTime = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 213, 129));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 113));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        InfTimeCuestios.setBackground(new java.awt.Color(200, 81, 3));
+        InfTimeCuestios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        InfTimeCuestios.setForeground(new java.awt.Color(255, 255, 255));
+
+        InfTime.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        InfTime.setForeground(new java.awt.Color(255, 255, 255));
+        InfTime.setText("00:15");
+
+        javax.swing.GroupLayout InfTimeCuestiosLayout = new javax.swing.GroupLayout(InfTimeCuestios);
+        InfTimeCuestios.setLayout(InfTimeCuestiosLayout);
+        InfTimeCuestiosLayout.setHorizontalGroup(
+            InfTimeCuestiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfTimeCuestiosLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(InfTime)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        InfTimeCuestiosLayout.setVerticalGroup(
+            InfTimeCuestiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfTimeCuestiosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfTime, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(InfTimeCuestios, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 213, 129));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 2, true));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 886, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 386, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 108, 890, 390));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/NewBarraProgres (2).gif"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,6 +195,10 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel InfTime;
+    private javax.swing.JPanel InfTimeCuestios;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

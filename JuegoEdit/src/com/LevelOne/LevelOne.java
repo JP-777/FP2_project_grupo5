@@ -44,6 +44,7 @@ public class LevelOne extends javax.swing.JFrame {
         startMoveTimerColors(); // Inicia el temporizador para mover los TarColor
     }
     
+     
     //agregado
         private void startTimer() {
         timer = new Timer(DELAY, new ActionListener() {
@@ -58,25 +59,25 @@ public class LevelOne extends javax.swing.JFrame {
         }
         
         
-       // Movimiento de jLabel7
-    private void startMoveTimer7() {
-        moveTimer7 = new Timer(MOVE_DELAY7, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int x = jLabel7.getLocation().x;
-                int y = jLabel7.getLocation().y;
-                x += MOVE_AMOUNT7 * moveDirection7;
-                
-                // Cambia la dirección si alcanza los límites
-                if (x < MOVE_LIMIT7 || x + jLabel7.getWidth() > jPanel2.getWidth() - MOVE_LIMIT7) {
-                    moveDirection7 *= -1;
+        // Movimiento de jLabel7
+        private void startMoveTimer7() {
+            moveTimer7 = new Timer(MOVE_DELAY7, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int x = jLabel7.getLocation().x;
+                    int y = jLabel7.getLocation().y;
                     x += MOVE_AMOUNT7 * moveDirection7;
+
+                    // Cambia la dirección si alcanza los límites
+                    if (x < MOVE_LIMIT7 || x + jLabel7.getWidth() > jPanel2.getWidth() - MOVE_LIMIT7) {
+                        moveDirection7 *= -1;
+                        x += MOVE_AMOUNT7 * moveDirection7;
+                    }
+                    jLabel7.setLocation(x, y);
                 }
-                jLabel7.setLocation(x, y);
-            }
-        });
-        moveTimer7.start(); // Inicia el temporizador de movimiento
-    }
+            });
+            moveTimer7.start(); // Inicia el temporizador de movimiento
+        }
     
         // Movimiento de los TarColor
         private void startMoveTimerColors() {
@@ -92,7 +93,7 @@ public class LevelOne extends javax.swing.JFrame {
             moveTimerColors.start(); // Inicia el temporizador de movimiento
         }
 
-        private void moveLabel(javax.swing.JLabel label, int direction) {
+            private void moveLabel(javax.swing.JLabel label, int direction) {
             int x = label.getLocation().x;
             int y = label.getLocation().y;
             y += MOVE_AMOUNT * direction;
@@ -110,12 +111,8 @@ public class LevelOne extends javax.swing.JFrame {
                 }
             }
             label.setLocation(x, y);
-        }
-        
-       
+           }
     
-        
-        
         private void moveToNextFrame() {
             stopSound(); // Detiene el audio antes de cerrar la ventana
             dispose(); // Cierra la ventana actual
@@ -145,35 +142,50 @@ public class LevelOne extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        InfTime = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         TarColorYellow = new javax.swing.JLabel();
         TarColorBlue = new javax.swing.JLabel();
         TraColorRed = new javax.swing.JLabel();
         TarColorGreen = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 550));
 
-        jPanel1.setBackground(new java.awt.Color(255, 213, 129));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 113));
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 550));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(200, 81, 3));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+
+        InfTime.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        InfTime.setForeground(new java.awt.Color(255, 255, 255));
+        InfTime.setText("00:07");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(InfTime)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfTime, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 350, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, 170, 60));
 
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 2, true));
@@ -204,8 +216,8 @@ public class LevelOne extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(TarColorGreen, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(171, 171, 171)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -225,21 +237,11 @@ public class LevelOne extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 96, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 410, 80));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/AdornitosMascotas2.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 0, 140, 84));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/NewBarraProgres (2).gif"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,15 +293,16 @@ public class LevelOne extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel InfTime;
     private javax.swing.JLabel TarColorBlue;
     private javax.swing.JLabel TarColorGreen;
     private javax.swing.JLabel TarColorYellow;
     private javax.swing.JLabel TraColorRed;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
