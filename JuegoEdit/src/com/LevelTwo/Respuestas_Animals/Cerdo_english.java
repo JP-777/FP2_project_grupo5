@@ -4,19 +4,60 @@
  */
 package com.LevelTwo.Respuestas_Animals;
 
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author user
  */
 public class Cerdo_english extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cerdo_english
-     */
+    private static final int DELAY = 8000; // Duración en milisegundos 
+    private Timer timer;
+    
+    private AudioClip sound; // Variable para el audio
+    
     public Cerdo_english() {
         initComponents();
+        startTimer();
+        playSound(); // Reproduce el audio al iniciar
     }
+    
+    //metodos
+    //agregado
+        private void startTimer() {
+        timer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop(); // Detiene el temporizador
+                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+            }
+        });
+        timer.setRepeats(false); // El temporizador no se repite
+        timer.start(); // Inicia el temporizador
+        }
+        
+        
+        private void moveToNextFrame() {
+            stopSound(); // Detiene el audio antes de cerrar la ventana
+            dispose(); // Cierra la ventana actual
+            new com.Fin.FIN().setVisible(true); //acomodar
+        }
 
+        private void playSound() {
+            sound = java.applet.Applet.newAudioClip(getClass().getResource("AudiosAprender_Animals/AudiosAprender_Cerdo.wav"));
+            sound.play();
+        }
+
+        private void stopSound() {
+            if (sound != null) {
+                sound.stop();
+            }
+        }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,7 +102,7 @@ public class Cerdo_english extends javax.swing.JFrame {
                 .addGap(41, 41, 41))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botPig.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botCerdo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

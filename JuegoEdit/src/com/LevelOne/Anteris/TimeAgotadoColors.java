@@ -16,7 +16,7 @@ import javax.swing.Timer;
 public class TimeAgotadoColors extends javax.swing.JFrame {
 
     //agregando
-    private static final int DELAY = 15000; // Duración en milisegundos 
+    private static final int DELAY = 7000; // Duración en milisegundos 
     private Timer timer;
     
     private AudioClip sound; // Variable para el audio

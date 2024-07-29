@@ -4,19 +4,63 @@
  */
 package com.LevelTwo.AnterisTwo;
 
+import com.LevelOne.Anteris.TimeAgotadoColors;
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author user
  */
 public class ErrorAnimals extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TwoError
-     */
+    //agregando
+    private static final int DELAY = 7000; // Duración en milisegundos 
+    private Timer timer;
+    
+    private AudioClip sound; // Variable para el audio
+    
     public ErrorAnimals() {
         initComponents();
+        startTimer();
+        playSound(); // Reproduce el audio al iniciar
     }
+    
+    //metodos
+    //agregado
+        private void startTimer() {
+        timer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop(); // Detiene el temporizador
+                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+            }
+        });
+        timer.setRepeats(false); // El temporizador no se repite
+        timer.start(); // Inicia el temporizador
+        }
+        
+        
+        private void moveToNextFrame() {
+            stopSound(); // Detiene el audio antes de cerrar la ventana
+            dispose(); // Cierra la ventana actual
+            // Abre la siguiente ventana dependiendo la carta q no pudo adivinar
+            new TimeAgotadoColors().setVisible(true); //acomodar
+        }
 
+        private void playSound() {
+            sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisTwo/AudioErrorAcierto.wav"));
+            sound.play();
+        }
+
+        private void stopSound() {
+            if (sound != null) {
+                sound.stop();
+            }
+        }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +84,7 @@ public class ErrorAnimals extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        MostrarCartaCorrecta.setText("jLabel2");
+        MostrarCartaCorrecta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 0), 1, true));
         jPanel1.add(MostrarCartaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 185, 263));
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 113));

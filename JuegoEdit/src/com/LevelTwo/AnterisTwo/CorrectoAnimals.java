@@ -48,7 +48,8 @@ public class CorrectoAnimals extends javax.swing.JFrame {
         timer.setRepeats(false); // El temporizador no se repite
         timer.start(); // Inicia el temporizador
     }
-
+   
+   //Quitable
     private void moveToNextFrame() {
         dispose(); // Cierra la ventana actual
         new LevelOne().setVisible(true); // Abre la siguiente ventana ()
@@ -115,14 +116,14 @@ public class CorrectoAnimals extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 550));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/MENSAJEALIENTOCORRECTO.gif"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 350));

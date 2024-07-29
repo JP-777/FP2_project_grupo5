@@ -50,7 +50,8 @@ public class CorrectoColor extends javax.swing.JFrame {
         timer.start(); // Inicia el temporizador
     }
 
-    private void moveToNextFrame() {
+   //QUITABLE 
+   private void moveToNextFrame() {
         dispose(); // Cierra la ventana actual
         new LevelOne().setVisible(true); // Abre la siguiente ventana ()
     }

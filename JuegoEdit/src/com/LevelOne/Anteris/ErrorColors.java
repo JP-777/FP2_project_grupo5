@@ -11,7 +11,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author user
+ * @author Daniusw, Dieguito, Denilson, El nero
  */
 public class ErrorColors extends javax.swing.JFrame {
 
