@@ -70,7 +70,7 @@ public class CorrectoNumbers extends javax.swing.JFrame {
     //metodo para reducir el sonido
     private void playSoundWithReducedVolume() {
         try {
-            File audioFile = new File(getClass().getResource("audiosAnterisTwo/AudioFelicitacionAcierto.wav").getFile());
+            File audioFile = new File(getClass().getResource("audiosAnterisThree/AudioFelicitacionAcierto.wav").getFile());
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
             audioClip = AudioSystem.getClip();
             audioClip.open(audioStream);
