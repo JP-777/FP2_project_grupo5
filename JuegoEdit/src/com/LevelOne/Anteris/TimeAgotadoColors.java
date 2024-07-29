@@ -35,6 +35,7 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
         green = g;
         yellow = y;
         red = r;
+        botCartAdivinada = cartaAleatoria;
         
         initComponents();
         startTimer();
@@ -90,11 +91,11 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        MostrarCartaCorrecta = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        botCartAdivinada = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,9 +106,6 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/LevelOneTimeAgotado.gif"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 250, 230));
-
-        MostrarCartaCorrecta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 1, true));
-        jPanel1.add(MostrarCartaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 185, 263));
 
         jPanel2.setBackground(new java.awt.Color(200, 81, 3));
 
@@ -152,6 +150,16 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/MENSAJEtimeagotado.gif"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 580, 350));
 
+        botCartAdivinada.setBackground(new java.awt.Color(255, 213, 129));
+        botCartAdivinada.setToolTipText("");
+        botCartAdivinada.setBorder(null);
+        botCartAdivinada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botCartAdivinadaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botCartAdivinada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 210, 260));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,13 +174,17 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botCartAdivinadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartAdivinadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botCartAdivinadaActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel MostrarCartaCorrecta;
+    private javax.swing.JButton botCartAdivinada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
