@@ -1,18 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.LevelOne.Anteris;
 
 import com.LevelOne.LevelOne;
-import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.FloatControl;
 import javax.swing.Timer;
+import javax.sound.sampled.*;
+
+
 
 /**
  *
- * @author Daniusw
+ * @author Daniusw,Dieguito,Denilson,ElNero
  */
 
 public class CorrectoColor extends javax.swing.JFrame {
@@ -20,14 +24,15 @@ public class CorrectoColor extends javax.swing.JFrame {
     private static final int DELAY = 7000; // Duración en milisegundos 
     private Timer timer;
     
-    private AudioClip sound; // Variable para el audio
+    private Clip audioClip; // Variable para el audio
 
     
     
     public CorrectoColor() {
         initComponents();
         startTimer();
-        playSound(); // Reproduce el audio al iniciar
+        //playSound(); // Reproduce el audio al iniciar
+        playSoundWithReducedVolume(); // Reproduce el audio al iniciar con volumen reducido
     }
     
     //metodos control
@@ -50,17 +55,39 @@ public class CorrectoColor extends javax.swing.JFrame {
         new LevelOne().setVisible(true); // Abre la siguiente ventana ()
     }
 
-    private void playSound() {
-        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/MenuMusica.wav"));
+    /*private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisOne/AudioFelicitacionAcierto.wav"));
         sound.play();
-    }
+    }*/
 
     private void stopSound() {
-        if (sound != null) {
-            sound.stop();
+        if (audioClip != null) {
+            audioClip.stop();
         }
     }
     
+    
+    //metodo para reducir el sonido
+    private void playSoundWithReducedVolume() {
+        try {
+            File audioFile = new File(getClass().getResource("audiosAnterisOne/AudioFelicitacionAcierto.wav").getFile());
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            audioClip = AudioSystem.getClip();
+            audioClip.open(audioStream);
+
+            // Reduce el volumen al 75% del original
+            FloatControl volumeControl = (FloatControl) audioClip.getControl(FloatControl.Type.MASTER_GAIN);
+            float min = volumeControl.getMinimum();
+            float max = volumeControl.getMaximum();
+            float volume = (max - min) * 0.75f + min;
+            volumeControl.setValue(volume);
+
+            audioClip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.

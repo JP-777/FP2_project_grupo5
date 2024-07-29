@@ -49,7 +49,7 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
         }
 
         private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("../../audios/audioMusic.wav"));
+            sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisOne/AudioTimeAgotadoAcierto.wav"));
             sound.play();
         }
 
