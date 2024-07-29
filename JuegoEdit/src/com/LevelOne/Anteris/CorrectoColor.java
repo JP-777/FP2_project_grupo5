@@ -4,19 +4,64 @@
  */
 package com.LevelOne.Anteris;
 
+import com.LevelOne.LevelOne;
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
- * @author user
+ * @author Daniusw
  */
+
 public class CorrectoColor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Correcto
-     */
+    private static final int DELAY = 7000; // Duración en milisegundos 
+    private Timer timer;
+    
+    private AudioClip sound; // Variable para el audio
+
+    
+    
     public CorrectoColor() {
         initComponents();
+        startTimer();
+        playSound(); // Reproduce el audio al iniciar
+    }
+    
+    //metodos control
+    //agregado
+   private void startTimer() {
+        timer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop(); // Detiene el temporizador
+                stopSound(); // Detiene el audio
+                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+            }
+        });
+        timer.setRepeats(false); // El temporizador no se repite
+        timer.start(); // Inicia el temporizador
     }
 
+    private void moveToNextFrame() {
+        dispose(); // Cierra la ventana actual
+        new LevelOne().setVisible(true); // Abre la siguiente ventana ()
+    }
+
+    private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/MenuMusica.wav"));
+        sound.play();
+    }
+
+    private void stopSound() {
+        if (sound != null) {
+            sound.stop();
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,14 +90,14 @@ public class CorrectoColor extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 550));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/MENSAJEALIENTOCORRECTO.gif"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 350));
