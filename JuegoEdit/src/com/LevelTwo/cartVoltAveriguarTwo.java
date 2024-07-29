@@ -44,9 +44,7 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
                     InfTime.setText(String.format("%02d:%02d", minutes, seconds));
                 } else {
                     countdownTimer.stop();
-                    if (!cartaSeleccionada){
-                        moveToNextFrame(); // Mueve al frame de tiempo agotado si no se ha seleccionado ninguna carta
-                    }
+                    
                 }
             }
         });
@@ -71,7 +69,7 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     // añadido sistema de juego adivinar
     private void configurarCartas() {
         // arreglo de botones de animales
-        cartas = new JButton[]{botCartYellow, botCartBlue, botCatRed, botCartGreen};
+        cartas = new JButton[]{botCardPerro, botCardGato, botCardCerdo, botCardLeon};
         for (JButton carta : cartas) {
             carta.addActionListener(new ActionListener() {
                 @Override
@@ -105,32 +103,17 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     // verificar si se escogio el animal correcto
     private void verificarAdivinanza(JButton carta) {
         if (carta == cartaAleatoria) {
-            new com.LevelTwo.AnterisTwo.CorrectoAnimals().setVisible(true); // Abre el frame de carta correcta
-            enseñarAnimalEnIngles(carta);
+            new com.LevelTwo.AnterisTwo.CorrectoAnimals(cartaAleatoria, botCardPerro, botCardGato, botCardCerdo, botCardLeon).setVisible(true); // Abre el frame de carta correcta
         } else {
-            new com.LevelTwo.AnterisTwo.ErrorAnimals().setVisible(true); // Abre el frame de carta incorrecta
-            enseñarAnimalEnIngles(carta);
+            new com.LevelTwo.AnterisTwo.ErrorAnimals(cartaAleatoria, botCardPerro, botCardGato, botCardCerdo, botCardLeon).setVisible(true); // Abre el frame de carta incorrecta
         }
         dispose(); // Cierra la ventana actual
-    }
-    
-    // ejecutar frame de animal correcto o incorrecto o si se acabo el tiempo (enseñar en ingles)
-    private void enseñarAnimalEnIngles(JButton carta) {
-        if (carta == botCartYellow)
-            new com.LevelTwo.Respuestas_Animals.Perro_english().setVisible(true);
-        if (carta == botCartBlue) 
-            new com.LevelTwo.Respuestas_Animals.Gato_english().setVisible(true);
-        if (carta == botCatRed) 
-            new com.LevelTwo.Respuestas_Animals.Cerdo_english().setVisible(true);
-        if (carta == botCartGreen) 
-            new com.LevelTwo.Respuestas_Animals.Leon_english().setVisible(true);
-        dispose();
     }
     
     private void moveToNextFrame() {
         stopSound(); // Detiene el audio antes de cerrar la ventana
         dispose(); // Cierra la ventana actual
-        new com.LevelTwo.AnterisTwo.TimeAgotadoAnimals().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        new com.LevelTwo.AnterisTwo.TimeAgotadoAnimals(cartaAleatoria, botCardPerro, botCardGato, botCardCerdo, botCardLeon).setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
     }
 
     private void playSound() {
@@ -159,10 +142,10 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
         InfTime = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        botCartYellow = new javax.swing.JButton();
-        botCatRed = new javax.swing.JButton();
-        botCartBlue = new javax.swing.JButton();
-        botCartGreen = new javax.swing.JButton();
+        botCardPerro = new javax.swing.JButton();
+        botCardCerdo = new javax.swing.JButton();
+        botCardGato = new javax.swing.JButton();
+        botCardLeon = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -209,24 +192,24 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 2, true));
 
-        botCartYellow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
-        botCartYellow.setBorder(null);
-        botCartYellow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCardPerro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
+        botCardPerro.setBorder(null);
+        botCardPerro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        botCatRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
-        botCatRed.setBorder(null);
-        botCatRed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCardCerdo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
+        botCardCerdo.setBorder(null);
+        botCardCerdo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        botCartBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
-        botCartBlue.setBorder(null);
-        botCartBlue.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCardGato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
+        botCardGato.setBorder(null);
+        botCardGato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        botCartGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
-        botCartGreen.setBorder(null);
-        botCartGreen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botCartGreen.addActionListener(new java.awt.event.ActionListener() {
+        botCardLeon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
+        botCardLeon.setBorder(null);
+        botCardLeon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCardLeon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botCartGreenActionPerformed(evt);
+                botCardLeonActionPerformed(evt);
             }
         });
 
@@ -236,13 +219,13 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(botCartYellow, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botCardPerro, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botCartBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botCardGato, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botCatRed, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botCardCerdo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botCartGreen, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botCardLeon, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(136, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -250,10 +233,10 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botCartYellow, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botCatRed, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botCartBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botCartGreen, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botCardPerro, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botCardCerdo, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botCardGato, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botCardLeon, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
 
@@ -292,9 +275,9 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botCartGreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartGreenActionPerformed
+    private void botCardLeonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCardLeonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botCartGreenActionPerformed
+    }//GEN-LAST:event_botCardLeonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,10 +317,10 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel InfTime;
     private javax.swing.JPanel InfTimeCuestios;
-    private javax.swing.JButton botCartBlue;
-    private javax.swing.JButton botCartGreen;
-    private javax.swing.JButton botCartYellow;
-    private javax.swing.JButton botCatRed;
+    private javax.swing.JButton botCardCerdo;
+    private javax.swing.JButton botCardGato;
+    private javax.swing.JButton botCardLeon;
+    private javax.swing.JButton botCardPerro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

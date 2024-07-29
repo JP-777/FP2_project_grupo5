@@ -43,9 +43,7 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
                     InfTime.setText(String.format("%02d:%02d", minutes, seconds));
                 } else {
                     countdownTimer.stop();
-                    if (!cartaSeleccionada){
-                        moveToNextFrame(); // Mueve al frame de tiempo agotado si no se ha seleccionado ninguna carta
-                    }
+                    
                 }
             }
         });
@@ -104,32 +102,17 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
     // verificar si se escogio el numero correcto
     private void verificarAdivinanza(JButton carta) {
         if (carta == cartaAleatoria) {
-            new com.LevelThree.AnterisThree.CorrectoNumbers().setVisible(true); // Abre el frame de carta correcta
-            enseñarNumeroEnIngles(carta);
+            new com.LevelThree.AnterisThree.CorrectoNumbers(cartaAleatoria, botCardUno, botCardDos, botCardTres, botCardCuatro).setVisible(true); // Abre el frame de carta correcta
         } else {
-            new com.LevelThree.AnterisThree.ErrorNumbers().setVisible(true); // Abre el frame de carta incorrecta
-            enseñarNumeroEnIngles(carta);
+            new com.LevelThree.AnterisThree.ErrorNumbers(cartaAleatoria, botCardUno, botCardDos, botCardTres, botCardCuatro).setVisible(true); // Abre el frame de carta incorrecta
         }
         dispose(); // Cierra la ventana actual
-    }
-    
-    // ejecutar frame de animal correcto o incorrecto o si se acabo el tiempo (enseñar en ingles)
-    private void enseñarNumeroEnIngles(JButton carta) {
-        if (carta == botCardUno)
-            new com.LevelThree.Respuestas_Numbers.One_english().setVisible(true);
-        if (carta == botCardDos) 
-            new com.LevelThree.Respuestas_Numbers.Two_english().setVisible(true);
-        if (carta == botCardTres) 
-            new com.LevelThree.Respuestas_Numbers.Three_english().setVisible(true);
-        if (carta == botCardCuatro) 
-            new com.LevelThree.Respuestas_Numbers.Four_english().setVisible(true);
-        dispose();
     }
     
     private void moveToNextFrame() {
         stopSound(); // Detiene el audio antes de cerrar la ventana
         dispose(); // Cierra la ventana actual
-        new com.LevelThree.AnterisThree.TimeAgotadoNumbers().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        new com.LevelThree.AnterisThree.TimeAgotadoNumbers(cartaAleatoria, botCardUno, botCardDos, botCardTres, botCardCuatro).setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
     }
 
     private void playSound() {

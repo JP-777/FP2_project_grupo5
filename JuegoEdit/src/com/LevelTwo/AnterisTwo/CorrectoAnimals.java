@@ -12,6 +12,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JButton;
 import javax.swing.Timer;
 
 
@@ -26,8 +27,19 @@ public class CorrectoAnimals extends javax.swing.JFrame {
     
     private Clip audioClip; // Variable para el audio
     
+    private JButton cartaAleatoria; // Variable para almacenar la carta aleatoria de cartVoltAveriguar 
+    private JButton perro;
+    private JButton gato;
+    private JButton cerdo;
+    private JButton leon;
     
-    public CorrectoAnimals() {
+    public CorrectoAnimals(JButton cartaAleatoria, JButton p, JButton g, JButton c, JButton l) {
+        this.cartaAleatoria = cartaAleatoria;
+        perro = p;
+        gato = g;
+        cerdo = c;
+        leon = l;
+        
         initComponents();
         startTimer();
         //playSound(); // Reproduce el audio al iniciar
@@ -36,23 +48,31 @@ public class CorrectoAnimals extends javax.swing.JFrame {
     
     //metodos control
     //agregado
-   private void startTimer() {
+    private void startTimer() {
         timer = new Timer(DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
                 stopSound(); // Detiene el audio
-                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+                ensenarColorEnIngles(); // Llama al método para mover a la siguiente ventana
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
         timer.start(); // Inicia el temporizador
     }
    
-   //Quitable
-    private void moveToNextFrame() {
-        dispose(); // Cierra la ventana actual
-        new LevelOne().setVisible(true); // Abre la siguiente ventana ()
+    // 
+    private void ensenarColorEnIngles() {
+        stopSound();
+        if (cartaAleatoria == perro)
+            new com.LevelTwo.Respuestas_Animals.Perro_english().setVisible(true);
+        if (cartaAleatoria == gato) 
+            new com.LevelTwo.Respuestas_Animals.Gato_english().setVisible(true);
+        if (cartaAleatoria == cerdo) 
+            new com.LevelTwo.Respuestas_Animals.Cerdo_english().setVisible(true);
+        if (cartaAleatoria == leon) 
+            new com.LevelTwo.Respuestas_Animals.Leon_english().setVisible(true);
+        dispose();
     }
 
     /*private void playSound() {
@@ -163,40 +183,7 @@ public class CorrectoAnimals extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CorrectoAnimals.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CorrectoAnimals.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CorrectoAnimals.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CorrectoAnimals.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CorrectoAnimals().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel3;

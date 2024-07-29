@@ -8,6 +8,7 @@ import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import javax.swing.JButton;
 import javax.swing.Timer;
 
 /**
@@ -22,55 +23,61 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
     
     private AudioClip sound; // Variable para el audio
     
-    public TimeAgotadoColors() {
+    private JButton cartaAleatoria; // Variable para almacenar la carta aleatoria de cartVoltAveriguar 
+    private JButton blue;
+    private JButton green;
+    private JButton yellow;
+    private JButton red;
+    
+    public TimeAgotadoColors(JButton cartaAleatoria, JButton b, JButton g, JButton y, JButton r) {
+        this.cartaAleatoria = cartaAleatoria;
+        blue = b;
+        green = g;
+        yellow = y;
+        red = r;
+        
         initComponents();
         startTimer();
         playSound(); // Reproduce el audio al iniciar
     }
     
     //agregado
-        private void startTimer() {
+    private void startTimer() {
         timer = new Timer(DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
-                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+                ensenarColorEnIngles(); // Llama al método para mover a la siguiente ventana
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
         timer.start(); // Inicia el temporizador
-        }
+    }
         
         
-        private void moveToNextFrame() {
-            stopSound(); // Detiene el audio antes de cerrar la ventana
-        
-            int indiceAleatorio = new Random().nextInt(4);
+    private void ensenarColorEnIngles() {
+        stopSound();
+        if (cartaAleatoria == blue)
+            new com.LevelOne.Respuestas.Blue_english().setVisible(true);
+        if (cartaAleatoria == green) 
+            new com.LevelOne.Respuestas.Green_english().setVisible(true);
+        if (cartaAleatoria == yellow) 
+            new com.LevelOne.Respuestas.Red_english().setVisible(true);
+        if (cartaAleatoria == red) 
+            new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
+        dispose();
+    }
 
-            // Compara el ícono del botón colorEnseñar con los íconos definidos
-            if (indiceAleatorio == 1) {
-                new com.LevelOne.Respuestas.Blue_english().setVisible(true);
-            } else if (indiceAleatorio == 2) {
-                new com.LevelOne.Respuestas.Green_english().setVisible(true);
-            } else if (indiceAleatorio == 3) {
-                new com.LevelOne.Respuestas.Red_english().setVisible(true);
-            } else if (indiceAleatorio == 4) {
-                new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
-            }
+    private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisOne/AudioTimeAgotadoAcierto.wav"));
+        sound.play();
+    }
 
-            dispose(); // Cierra la ventana actual después de abrir la nueva
+    private void stopSound() {
+        if (sound != null) {
+            sound.stop();
         }
-
-        private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisOne/AudioTimeAgotadoAcierto.wav"));
-            sound.play();
-        }
-
-        private void stopSound() {
-            if (sound != null) {
-                sound.stop();
-            }
-        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -162,38 +169,7 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TimeAgotadoColors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TimeAgotadoColors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TimeAgotadoColors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TimeAgotadoColors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TimeAgotadoColors().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel MostrarCartaCorrecta;

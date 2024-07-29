@@ -144,13 +144,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="botCartYellow" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCardPerro" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="botCartBlue" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCardGato" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="botCatRed" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCardCerdo" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botCartGreen" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCardLeon" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace pref="136" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -160,10 +160,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botCartYellow" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                          <Component id="botCatRed" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                          <Component id="botCartBlue" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                          <Component id="botCartGreen" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCardPerro" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCardCerdo" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCardGato" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCardLeon" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="79" max="32767" attributes="0"/>
                   </Group>
@@ -171,7 +171,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="botCartYellow">
+            <Component class="javax.swing.JButton" name="botCardPerro">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/images/reversoCartas.png"/>
@@ -184,7 +184,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="botCatRed">
+            <Component class="javax.swing.JButton" name="botCardCerdo">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/images/reversoCartas.png"/>
@@ -197,7 +197,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="botCartBlue">
+            <Component class="javax.swing.JButton" name="botCardGato">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/images/reversoCartas.png"/>
@@ -210,7 +210,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="botCartGreen">
+            <Component class="javax.swing.JButton" name="botCardLeon">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/images/reversoCartas.png"/>
@@ -223,7 +223,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCartGreenActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCardLeonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

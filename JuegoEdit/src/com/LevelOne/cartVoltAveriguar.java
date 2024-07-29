@@ -109,32 +109,17 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     // verificar si se escogio el color correcto
     private void verificarAdivinanza(JButton carta) {
         if (carta == cartaAleatoria) {
-            new com.LevelOne.Anteris.CorrectoColor().setVisible(true); // Abre el frame de carta correcta
-            enseñarColorEnIngles(carta);
+            new com.LevelOne.Anteris.CorrectoColor(cartaAleatoria, botCartBlue, botCartGreen, botCartYellow, botCartRed).setVisible(true); // Abre el frame de carta correcta  
         } else {
-            new com.LevelOne.Anteris.ErrorColors().setVisible(true); // Abre el frame de carta incorrecta
-            enseñarColorEnIngles(carta);
+            new com.LevelOne.Anteris.ErrorColors(cartaAleatoria, botCartBlue, botCartGreen, botCartYellow, botCartRed).setVisible(true); // Abre el frame de carta incorrecta
         }
         dispose(); // Cierra la ventana actual
-    }
-    
-    // ejecutar frame de color correcto (enseñar en ingles)
-    private void enseñarColorEnIngles(JButton carta) {
-        if (carta == botCartBlue)
-            new com.LevelOne.Respuestas.Blue_english().setVisible(true);
-        if (carta == botCartGreen) 
-            new com.LevelOne.Respuestas.Green_english().setVisible(true);
-        if (carta == botCartYellow) 
-            new com.LevelOne.Respuestas.Red_english().setVisible(true);
-        if (carta == botCartRed) 
-            new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
-        dispose();
     }
     
     private void moveToNextFrame() {
         stopSound(); // Detiene el audio antes de cerrar la ventana
         dispose(); // Cierra la ventana actual
-        new TimeAgotadoColors().setVisible(true); // Abre la siguiente ventana
+        new TimeAgotadoColors(cartaAleatoria, botCartBlue, botCartGreen, botCartYellow, botCartRed).setVisible(true); // Abre la siguiente ventana
     }
 
     private void playSound() {

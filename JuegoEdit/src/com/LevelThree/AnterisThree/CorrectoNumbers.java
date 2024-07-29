@@ -15,6 +15,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JButton;
 import javax.swing.Timer;
 
 /**
@@ -27,7 +28,20 @@ public class CorrectoNumbers extends javax.swing.JFrame {
     private Timer timer;
     
     private Clip audioClip; // Variable para el audio
-    public CorrectoNumbers() {
+    
+    private JButton cartaAleatoria; // Variable para almacenar la carta aleatoria de cartVoltAveriguar 
+    private JButton uno;
+    private JButton dos;
+    private JButton tres;
+    private JButton cuatro;
+    
+    public CorrectoNumbers(JButton cartaAleatoria, JButton u, JButton d, JButton t, JButton c) {
+        this.cartaAleatoria = cartaAleatoria;
+        uno = u;
+        dos = d;
+        tres = t;
+        cuatro = c;
+        
         initComponents();
         startTimer();
         //playSound(); // Reproduce el audio al iniciar
@@ -36,23 +50,31 @@ public class CorrectoNumbers extends javax.swing.JFrame {
     
     //metodos control
     //agregado
-   private void startTimer() {
+    private void startTimer() {
         timer = new Timer(DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
                 stopSound(); // Detiene el audio
-                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+                ensenarColorEnIngles(); // Llama al método para mover a la siguiente ventana
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
         timer.start(); // Inicia el temporizador
     }
    
-   //Quitable
-    private void moveToNextFrame() {
-        dispose(); // Cierra la ventana actual
-        new LevelOne().setVisible(true); // Abre la siguiente ventana ()
+    // 
+    private void ensenarColorEnIngles() {
+        stopSound();
+        if (cartaAleatoria == uno)
+            new com.LevelThree.Respuestas_Numbers.One_english().setVisible(true);
+        if (cartaAleatoria == dos) 
+            new com.LevelThree.Respuestas_Numbers.Two_english().setVisible(true);
+        if (cartaAleatoria == tres) 
+            new com.LevelThree.Respuestas_Numbers.Three_english().setVisible(true);
+        if (cartaAleatoria == cuatro) 
+            new com.LevelThree.Respuestas_Numbers.Four_english().setVisible(true);
+        dispose();
     }
 
     /*private void playSound() {
@@ -163,37 +185,7 @@ public class CorrectoNumbers extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CorrectoNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CorrectoNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CorrectoNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CorrectoNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CorrectoNumbers().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel3;

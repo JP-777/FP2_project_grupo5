@@ -8,6 +8,7 @@ import com.LevelOne.Anteris.TimeAgotadoColors;
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.Timer;
 
 /**
@@ -22,7 +23,19 @@ public class ErrorNumbers extends javax.swing.JFrame {
     
     private AudioClip sound; // Variable para el audio
     
-    public ErrorNumbers() {
+    private JButton cartaAleatoria; // Variable para almacenar la carta aleatoria de cartVoltAveriguar 
+    private JButton uno;
+    private JButton dos;
+    private JButton tres;
+    private JButton cuatro;
+    
+    public ErrorNumbers(JButton cartaAleatoria, JButton u, JButton d, JButton t, JButton c) {
+        this.cartaAleatoria = cartaAleatoria;
+        uno = u;
+        dos = d;
+        tres = t;
+        cuatro = c;
+        
         initComponents();
         startTimer();
         playSound(); // Reproduce el audio al iniciar
@@ -30,36 +43,43 @@ public class ErrorNumbers extends javax.swing.JFrame {
     
     //metodos
     //agregado
-        private void startTimer() {
+    private void startTimer() {
         timer = new Timer(DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
-                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+                ensenarColorEnIngles(); // Llama al método para mover a la siguiente ventana
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
         timer.start(); // Inicia el temporizador
-        }
+    }
         
         
-        private void moveToNextFrame() {
-            stopSound(); // Detiene el audio antes de cerrar la ventana
-            dispose(); // Cierra la ventana actual
-            // Abre la siguiente ventana dependiendo la carta q no pudo adivinar
-            new TimeAgotadoColors().setVisible(true); //acomodar
-        }
+    // 
+    private void ensenarColorEnIngles() {
+        stopSound();
+        if (cartaAleatoria == uno)
+            new com.LevelThree.Respuestas_Numbers.One_english().setVisible(true);
+        if (cartaAleatoria == dos) 
+            new com.LevelThree.Respuestas_Numbers.Two_english().setVisible(true);
+        if (cartaAleatoria == tres) 
+            new com.LevelThree.Respuestas_Numbers.Three_english().setVisible(true);
+        if (cartaAleatoria == cuatro) 
+            new com.LevelThree.Respuestas_Numbers.Four_english().setVisible(true);
+        dispose();
+    }
 
-        private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisThree/AudioErrorAcierto.wav"));
-            sound.play();
-        }
+    private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisThree/AudioErrorAcierto.wav"));
+        sound.play();
+    }
 
-        private void stopSound() {
-            if (sound != null) {
-                sound.stop();
-            }
+    private void stopSound() {
+        if (sound != null) {
+            sound.stop();
         }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,37 +169,7 @@ public class ErrorNumbers extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ErrorNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ErrorNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ErrorNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ErrorNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ErrorNumbers().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel MostrarCartaCorrecta;
