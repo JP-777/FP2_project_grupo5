@@ -145,7 +145,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="botCartBlue" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botCatRed" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCartRed" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="botCartGreen" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace pref="128" max="32767" attributes="0"/>
@@ -159,7 +159,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="botCartYellow" min="-2" pref="237" max="-2" attributes="0"/>
                           <Component id="botCartBlue" min="-2" pref="237" max="-2" attributes="0"/>
-                          <Component id="botCatRed" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCartRed" min="-2" pref="237" max="-2" attributes="0"/>
                           <Component id="botCartGreen" min="-2" pref="237" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="78" max="32767" attributes="0"/>
@@ -184,7 +184,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCartYellowActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botCatRed">
+            <Component class="javax.swing.JButton" name="botCartRed">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/images/reversoCartas.png"/>
@@ -197,7 +197,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCatRedActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCartRedActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botCartBlue">

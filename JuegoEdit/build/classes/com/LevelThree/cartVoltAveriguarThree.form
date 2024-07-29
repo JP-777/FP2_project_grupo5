@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1000, 550]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -140,13 +137,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="botCartYellow" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCardUno" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botCartBlue" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCardDos" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botCatRed" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCardTres" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botCartGreen" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="botCardCuatro" min="-2" pref="173" max="-2" attributes="0"/>
                       <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -156,10 +153,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botCartYellow" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                          <Component id="botCatRed" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                          <Component id="botCartBlue" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                          <Component id="botCartGreen" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCardUno" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCardTres" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCardDos" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="botCardCuatro" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="79" max="32767" attributes="0"/>
                   </Group>
@@ -167,46 +164,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="botCartYellow">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/images/reversoCartas.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="botCatRed">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/images/reversoCartas.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="botCartBlue">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/images/reversoCartas.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="botCartGreen">
+            <Component class="javax.swing.JButton" name="botCardUno">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/images/reversoCartas.png"/>
@@ -219,7 +177,55 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCartGreenActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCardUnoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="botCardTres">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/images/reversoCartas.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCardTresActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="botCardDos">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/images/reversoCartas.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCardDosActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="botCardCuatro">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/images/reversoCartas.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botCardCuatroActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -283,6 +289,16 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel3"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="860" y="0" width="140" height="190"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
