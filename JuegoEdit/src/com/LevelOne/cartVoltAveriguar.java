@@ -5,7 +5,6 @@ import com.LevelOne.Anteris.TimeAgotadoColors;
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
 import java.util.Random;
 import javax.swing.*;
 
@@ -31,7 +30,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         initComponents();
         startTimer();
         playSound(); // Reproduce el audio al iniciar
-        startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva    }
+        startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva
         configurarCartas(); // acciones de eventos de las cartas (para adivinar)
     }
     

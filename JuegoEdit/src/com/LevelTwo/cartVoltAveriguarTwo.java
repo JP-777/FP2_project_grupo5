@@ -1,19 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.LevelTwo;
 
 import com.LevelOne.NextFrame;
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
+import java.util.Random;
+import javax.swing.*;
 
-/**
- *
- * @author user
- */
 public class cartVoltAveriguarTwo extends javax.swing.JFrame {
 
     //agregando
@@ -26,14 +20,18 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     private Timer countdownTimer;
     private int remainingTime = DELAY / 1000; // Tiempo restante en segundos
     
+    // para jugabilidad de adivinar
+    private JButton[] cartas;
+    private JButton cartaAleatoria;   
+    private boolean cartaSeleccionada = false; // Para verificar si se ha seleccionado una carta
     
     public cartVoltAveriguarTwo() {
         initComponents();
         startTimer();
         playSound(); // Reproduce el audio al iniciar
-        startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva    }
+        startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva
+        configurarCartas(); // acciones de eventos de las cartas (para adivinar)
     }
-    
     
     private void startCountdownTimer() {
         countdownTimer = new Timer(1000, new ActionListener() {
@@ -46,6 +44,9 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
                     InfTime.setText(String.format("%02d:%02d", minutes, seconds));
                 } else {
                     countdownTimer.stop();
+                    if (!cartaSeleccionada){
+                        moveToNextFrame(); // Mueve al frame de tiempo agotado si no se ha seleccionado ninguna carta
+                    }
                 }
             }
         });
@@ -53,35 +54,95 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     }
     
     //agregado
-        private void startTimer() {
+    private void startTimer() {
         timer = new Timer(DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
-                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+                if (!cartaSeleccionada) {
+                    moveToNextFrame(); // Mueve al frame de tiempo agotado si no se ha seleccionado ninguna carta
+                }
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
         timer.start(); // Inicia el temporizador
-        }
+    }
         
+    // añadido sistema de juego adivinar
+    private void configurarCartas() {
+        // arreglo de botones de animales
+        cartas = new JButton[]{botCartYellow, botCartBlue, botCatRed, botCartGreen};
+        for (JButton carta : cartas) {
+            carta.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    cartaSeleccionada = true; // una carta ha sido escogida
+                    // cada carta(boton) se verificará al ser presionada
+                    verificarAdivinanza(carta);
+                }
+            });
+        }
+        mostrarCartaAleatoria(); 
+    }
+    
+    // oculta las cartas
+    private void voltearCartas() { 
+        for (JButton carta : cartas) {
+            carta.setIcon(new ImageIcon(getClass().getResource("/com/images/reversoCartas.png")));
+        }
+    }
+    
+    // carta aleatorio para ser adivinada
+    private void mostrarCartaAleatoria() {
+        int indiceAleatorio = new Random().nextInt(cartas.length);
+        cartaAleatoria = cartas[indiceAleatorio];
         
-        private void moveToNextFrame() {
-            stopSound(); // Detiene el audio antes de cerrar la ventana
-            dispose(); // Cierra la ventana actual
-            new NextFrame().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        // jLabel carta para adivinar
+        String[] animales = {"Perro", "Gato", "Cerdo", "Leon"};
+        jLabel3.setIcon(new ImageIcon(getClass().getResource("/com/images/bot" + animales[indiceAleatorio] + ".png")));
+    }
+    
+    // verificar si se escogio el animal correcto
+    private void verificarAdivinanza(JButton carta) {
+        if (carta == cartaAleatoria) {
+            new com.LevelTwo.AnterisTwo.CorrectoAnimals().setVisible(true); // Abre el frame de carta correcta
+            enseñarAnimalEnIngles(carta);
+        } else {
+            new com.LevelTwo.AnterisTwo.ErrorAnimals().setVisible(true); // Abre el frame de carta incorrecta
+            enseñarAnimalEnIngles(carta);
         }
+        dispose(); // Cierra la ventana actual
+    }
+    
+    // ejecutar frame de animal correcto o incorrecto o si se acabo el tiempo (enseñar en ingles)
+    private void enseñarAnimalEnIngles(JButton carta) {
+        if (carta == botCartYellow)
+            new com.LevelTwo.Respuestas_Animals.Perro_english().setVisible(true);
+        if (carta == botCartBlue) 
+            new com.LevelTwo.Respuestas_Animals.Gato_english().setVisible(true);
+        if (carta == botCatRed) 
+            new com.LevelTwo.Respuestas_Animals.Cerdo_english().setVisible(true);
+        if (carta == botCartGreen) 
+            new com.LevelTwo.Respuestas_Animals.Leon_english().setVisible(true);
+        dispose();
+    }
+    
+    private void moveToNextFrame() {
+        stopSound(); // Detiene el audio antes de cerrar la ventana
+        dispose(); // Cierra la ventana actual
+        new com.LevelTwo.AnterisTwo.TimeAgotadoAnimals().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+    }
 
-        private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
-            sound.play();
-        }
+    private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
+        sound.play();
+    }
 
-        private void stopSound() {
-            if (sound != null) {
-                sound.stop();
-            }
+    private void stopSound() {
+        if (sound != null) {
+            sound.stop();
         }
+    }
     
     
     /**
@@ -105,9 +166,9 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 550));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 113));
@@ -227,6 +288,9 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 180, 230));
 
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 40, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -281,6 +345,7 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
