@@ -5,19 +5,26 @@
 package com.ingreso;
 
 import java.applet.AudioClip;
+import Conexion.Conexion;
+import Pruebasacceso.loginn;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Daniusw
- */
 public class ingresar extends javax.swing.JFrame {
 
             private AudioClip sound;
+            Conexion cx;
 
     public ingresar() {
         initComponents();
         playSoundIngresar();
-
+        cx=new Conexion("JuegoFinal");
+        cx.conectar();
     }
     
     
@@ -48,10 +55,10 @@ public class ingresar extends javax.swing.JFrame {
         botStartPlay = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        userPart1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        passwordPart = new javax.swing.JPasswordField();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -85,10 +92,10 @@ public class ingresar extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTextField1.setBackground(new java.awt.Color(255, 213, 129));
-        jTextField1.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(null);
+        userPart1.setBackground(new java.awt.Color(255, 213, 129));
+        userPart1.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 18)); // NOI18N
+        userPart1.setForeground(new java.awt.Color(255, 255, 255));
+        userPart1.setBorder(null);
 
         jLabel4.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -99,11 +106,11 @@ public class ingresar extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("NOMBRE DEL JUGADOR");
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 213, 129));
-        jPasswordField1.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 18)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setBorder(null);
-        jPasswordField1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        passwordPart.setBackground(new java.awt.Color(255, 213, 129));
+        passwordPart.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 18)); // NOI18N
+        passwordPart.setForeground(new java.awt.Color(255, 255, 255));
+        passwordPart.setBorder(null);
+        passwordPart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -111,7 +118,7 @@ public class ingresar extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userPart1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(96, 96, 96)
@@ -122,7 +129,7 @@ public class ingresar extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passwordPart, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -132,13 +139,13 @@ public class ingresar extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userPart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordPart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -160,7 +167,7 @@ public class ingresar extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel5)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,10 +252,29 @@ public class ingresar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botStartPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botStartPlayActionPerformed
-        stopSound();
-        com.LevelOne.LevelOnePresentacion newRegresarMenu = new  com.LevelOne.LevelOnePresentacion();
-        newRegresarMenu.setVisible(true);
-        this.dispose();
+ 
+        try {
+            String user=userPart1.getText();
+            String password=String.valueOf(passwordPart.getPassword());
+            String query="SELECT * FROM usuarios WHERE nombre_jugador='"+user+"' AND contraseña='"+password+"'";
+            System.out.println(password);
+            
+            Statement st = cx.conectar().createStatement();
+            ResultSet rs=st.executeQuery(query);
+            if(rs.next()){
+                stopSound();
+                com.LevelOne.LevelOnePresentacion newRegresarMenu = new  com.LevelOne.LevelOnePresentacion();
+                JOptionPane.showMessageDialog(this, "EL USUARIO ESTA EN LA BD");
+                newRegresarMenu.setVisible(true);
+                stopSound();
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "EL USUARIO NO EXISTE EN LA BD");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(loginn.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
     }//GEN-LAST:event_botStartPlayActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -305,9 +331,9 @@ public class ingresar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField passwordPart;
+    private javax.swing.JTextField userPart1;
     // End of variables declaration//GEN-END:variables
 }
