@@ -109,7 +109,7 @@ public class Logros extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         stopSound();
-        com.Juego.menu newMenu = new com.Juego.menu();
+        com.Juego.menu_02 newMenu = new com.Juego.menu_02();
         newMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

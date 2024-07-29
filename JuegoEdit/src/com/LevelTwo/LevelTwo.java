@@ -146,15 +146,15 @@ public class LevelTwo extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         InfTime = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        InfTime2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        InfTime1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         TarAnimPerro = new javax.swing.JLabel();
         TarAnimGato = new javax.swing.JLabel();
         TarAnimCerdo = new javax.swing.JLabel();
         TarAnimLeon = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         jPanel4.setBackground(new java.awt.Color(200, 81, 3));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -190,32 +190,34 @@ public class LevelTwo extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(200, 81, 3));
-        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/BarraProgeso2.gif"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, 70));
 
-        InfTime2.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
-        InfTime2.setForeground(new java.awt.Color(255, 255, 255));
-        InfTime2.setText("00:07");
+        jPanel6.setBackground(new java.awt.Color(200, 81, 3));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel6.setForeground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(InfTime2)
-                .addContainerGap(44, Short.MAX_VALUE))
+        InfTime1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        InfTime1.setForeground(new java.awt.Color(255, 255, 255));
+        InfTime1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/Video Cuenta atrás Moderno Animado Negro (1).gif"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(InfTime1)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(InfTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(InfTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 90));
 
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 3, true));
@@ -267,9 +269,6 @@ public class LevelTwo extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 390));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/BarraProgeso2.gif"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, 70));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -278,7 +277,7 @@ public class LevelTwo extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -321,7 +320,7 @@ public class LevelTwo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel InfTime;
-    private javax.swing.JLabel InfTime2;
+    private javax.swing.JLabel InfTime1;
     private javax.swing.JLabel TarAnimCerdo;
     private javax.swing.JLabel TarAnimGato;
     private javax.swing.JLabel TarAnimLeon;
@@ -331,6 +330,6 @@ public class LevelTwo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables
 }

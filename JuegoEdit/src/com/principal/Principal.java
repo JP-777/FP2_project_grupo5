@@ -121,7 +121,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
         stopSound();
-        com.Juego.menu newAccount = new com.Juego.menu();
+        com.Juego.menu_02 newAccount = new com.Juego.menu_02();
         newAccount.setVisible(true);
         this.dispose();       
     }//GEN-LAST:event_IniciarActionPerformed

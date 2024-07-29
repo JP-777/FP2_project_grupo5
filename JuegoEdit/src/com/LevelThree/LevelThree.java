@@ -146,8 +146,8 @@ public class LevelThree extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        InfTime3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        InfTime = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         TitleNumbers = new javax.swing.JLabel();
         TarNumberOne = new javax.swing.JLabel();
@@ -166,32 +166,31 @@ public class LevelThree extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(200, 81, 3));
-        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel5.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(200, 81, 3));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
 
-        InfTime3.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
-        InfTime3.setForeground(new java.awt.Color(255, 255, 255));
-        InfTime3.setText("00:07");
+        InfTime.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        InfTime.setForeground(new java.awt.Color(255, 255, 255));
+        InfTime.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/Video Cuenta atrás Moderno Animado Negro (1).gif"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(InfTime3)
-                .addContainerGap(45, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(InfTime)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(InfTime3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(InfTime, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, -1, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 90));
 
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 3, true));
@@ -294,7 +293,7 @@ public class LevelThree extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel InfTime3;
+    private javax.swing.JLabel InfTime;
     private javax.swing.JLabel TarNumberFour;
     private javax.swing.JLabel TarNumberOne;
     private javax.swing.JLabel TarNumberThree;
@@ -303,6 +302,6 @@ public class LevelThree extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

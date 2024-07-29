@@ -308,7 +308,7 @@ public class Login extends javax.swing.JFrame {
 
     private void botRegresarCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRegresarCreateAccountActionPerformed
         stopSound();
-        com.Juego.menu newMenu = new com.Juego.menu();
+        com.Juego.menu_02 newMenu = new com.Juego.menu_02();
         newMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botRegresarCreateAccountActionPerformed

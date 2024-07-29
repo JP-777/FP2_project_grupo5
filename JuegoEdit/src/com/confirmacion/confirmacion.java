@@ -241,7 +241,7 @@ public class confirmacion extends javax.swing.JFrame {
 
     private void botRegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRegresarMenuActionPerformed
         stopSound();
-        com.Juego.menu newRegresarMenu = new com.Juego.menu();
+        com.Juego.menu_02 newRegresarMenu = new com.Juego.menu_02();
         newRegresarMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botRegresarMenuActionPerformed

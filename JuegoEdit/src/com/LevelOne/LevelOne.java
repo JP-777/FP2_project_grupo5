@@ -13,7 +13,7 @@ import javax.swing.Timer;
  */
 public class LevelOne extends javax.swing.JFrame {
 
-    private static final int DELAY = 7000; // Duración en milisegundos 
+    private static final int DELAY = 8000; // Duración en milisegundos 
     private Timer timer;
     
     private AudioClip sound; // Variable para el audio
@@ -167,26 +167,25 @@ public class LevelOne extends javax.swing.JFrame {
 
         InfTime.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
         InfTime.setForeground(new java.awt.Color(255, 255, 255));
-        InfTime.setText("00:07");
+        InfTime.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/Video Cuenta atrás Moderno Animado Negro (1).gif"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(100, 100, 100)
                 .addComponent(InfTime)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(InfTime, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(InfTime, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 170, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 90));
 
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 2, true));
