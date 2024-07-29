@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.Fin;
 
 import com.LevelTwo.cartVoltAveriguarTwo;
-import java.applet.AudioClip;
+import javax.sound.sampled.*;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  *
@@ -14,7 +13,7 @@ import java.applet.AudioClip;
  */
 public class FIN extends javax.swing.JFrame {
 
-    private AudioClip sound; // Variable para el audio
+    private Clip clip; // Variable para el audio
 
     public FIN() {
         initComponents();
@@ -28,13 +27,25 @@ public class FIN extends javax.swing.JFrame {
         }
 
         private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
-            sound.play();
+            try {
+            URL soundURL = getClass().getResource("../audios/LevelsSuspenso.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+            clip = AudioSystem.getClip();
+            clip.open(audioStream);
+
+            // Reducir el volumen a la mitad
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-10.0f); // Ajusta el valor según tus necesidades
+
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
         }
 
         private void stopSound() {
-            if (sound != null) {
-                sound.stop();
+            if (clip != null) {
+                clip.stop();
             }
         }
     

@@ -44,7 +44,7 @@ public class Gato_english extends javax.swing.JFrame {
         private void moveToNextFrame() {
             stopSound(); // Detiene el audio antes de cerrar la ventana
             dispose(); // Cierra la ventana actual
-            new com.Fin.FIN().setVisible(true); //acomodar
+            new com.LevelThree.PressLevelThree().setVisible(true); //acomodar
         }
 
         private void playSound() {
@@ -83,7 +83,7 @@ public class Gato_english extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("GTAO = CAT");
+        jLabel2.setText("GATO = CAT");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

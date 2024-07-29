@@ -44,7 +44,7 @@ public class Leon_english extends javax.swing.JFrame {
         private void moveToNextFrame() {
             stopSound(); // Detiene el audio antes de cerrar la ventana
             dispose(); // Cierra la ventana actual
-            new com.Fin.FIN().setVisible(true); //acomodar
+            new com.LevelThree.PressLevelThree().setVisible(true); //acomodar
         }
 
         private void playSound() {

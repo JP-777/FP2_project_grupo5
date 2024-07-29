@@ -2,11 +2,15 @@
 package com.LevelTwo;
 
 import com.LevelOne.NextFrame;
-import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.*;
+import javax.sound.sampled.*;
+import java.io.IOException;
+import java.net.URL;
+import javax.sound.sampled.Clip;
+
 
 public class cartVoltAveriguarTwo extends javax.swing.JFrame {
 
@@ -14,7 +18,7 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     private static final int DELAY = 15000; // Duración en milisegundos 
     private Timer timer;
     
-    private AudioClip sound; // Variable para el audio
+    private Clip clip; // Variable para el audio
     
     // Variable para el temporizador del tiempo restante
     private Timer countdownTimer;
@@ -75,6 +79,7 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     cartaSeleccionada = true; // una carta ha sido escogida
+                    stopSound();
                     // cada carta(boton) se verificará al ser presionada
                     verificarAdivinanza(carta);
                 }
@@ -117,15 +122,27 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     }
 
     private void playSound() {
-        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
-        sound.play();
-    }
+            try {
+                URL soundURL = getClass().getResource("../audios/LevelsSuspenso.wav");
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+                clip = AudioSystem.getClip();
+                clip.open(audioStream);
 
-    private void stopSound() {
-        if (sound != null) {
-            sound.stop();
+                // Reducir el volumen a la mitad
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(-15.0f); // Ajusta el valor según tus necesidades
+
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
         }
-    }
+
+        private void stopSound() {
+            if (clip != null) {
+            clip.stop();
+            }
+        }
     
     
     /**
@@ -195,6 +212,11 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
         botCardPerro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
         botCardPerro.setBorder(null);
         botCardPerro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCardPerro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botCardPerroActionPerformed(evt);
+            }
+        });
 
         botCardCerdo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
         botCardCerdo.setBorder(null);
@@ -278,6 +300,10 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     private void botCardLeonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCardLeonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botCardLeonActionPerformed
+
+    private void botCardPerroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCardPerroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botCardPerroActionPerformed
 
     /**
      * @param args the command line arguments

@@ -8,6 +8,10 @@ import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import javax.sound.sampled.*;
+import java.io.IOException;
+import java.net.URL;
+import javax.sound.sampled.Clip;
 
 /**
  *
@@ -19,7 +23,7 @@ public class LevelThree extends javax.swing.JFrame {
     private static final int DELAY = 7000; // Duración en milisegundos 
     private Timer timer;
     
-    private AudioClip sound; // Variable para el audio
+    private Clip clip; // Variable para el audio
     
     // Variables para el movimiento del jLabel Title
     private Timer moveTimerTitleNumbers;
@@ -124,16 +128,27 @@ public class LevelThree extends javax.swing.JFrame {
 
     // Reproducir sonido
     private void playSound() {
-        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
-        sound.play();
-    }
+            try {
+                URL soundURL = getClass().getResource("../audios/LevelsSuspenso.wav");
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+                clip = AudioSystem.getClip();
+                clip.open(audioStream);
 
-    // Detener sonido
-    private void stopSound() {
-        if (sound != null) {
-            sound.stop();
+                // Reducir el volumen a la mitad
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(-15.0f); // Ajusta el valor según tus necesidades
+
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
         }
-    }
+
+        private void stopSound() {
+            if (clip != null) {
+            clip.stop();
+            }
+        }
     
     
     /**

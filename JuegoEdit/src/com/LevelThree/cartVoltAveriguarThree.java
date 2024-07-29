@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.*;
+import javax.sound.sampled.*;
+import java.io.IOException;
+import java.net.URL;
+import javax.sound.sampled.Clip;
 
 public class cartVoltAveriguarThree extends javax.swing.JFrame {
 
@@ -13,7 +17,7 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
     private static final int DELAY = 15000; // Duración en milisegundos 
     private Timer timer;
     
-    private AudioClip sound; // Variable para el audio
+    private Clip clip; // Variable para el audio
     
     // Variable para el temporizador del tiempo restante
     private Timer countdownTimer;
@@ -74,6 +78,7 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     cartaSeleccionada = true; // una carta ha sido escogida
+                    stopSound();
                     // cada carta(boton) se verificará al ser presionada
                     verificarAdivinanza(carta);
                 }
@@ -115,16 +120,28 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
         new com.LevelThree.AnterisThree.TimeAgotadoNumbers(cartaAleatoria, botCardUno, botCardDos, botCardTres, botCardCuatro).setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
     }
 
-    private void playSound() {
-        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
-        sound.play();
-    }
+        private void playSound() {
+            try {
+                URL soundURL = getClass().getResource("../audios/LevelsSuspenso.wav");
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+                clip = AudioSystem.getClip();
+                clip.open(audioStream);
 
-    private void stopSound() {
-        if (sound != null) {
-            sound.stop();
+                // Reducir el volumen a la mitad
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(-15.0f); // Ajusta el valor según tus necesidades
+
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
         }
-    }
+
+        private void stopSound() {
+            if (clip != null) {
+            clip.stop();
+            }
+        }
     
     
     /**

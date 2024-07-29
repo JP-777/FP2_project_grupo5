@@ -1,10 +1,12 @@
 
 package com.LevelOne;
 
-import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import javax.sound.sampled.*;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  *
@@ -16,8 +18,8 @@ public class LevelOne extends javax.swing.JFrame {
     private static final int DELAY = 8000; // Duración en milisegundos 
     private Timer timer;
     
-    private AudioClip sound; // Variable para el audio
-    
+    private Clip clip; // Variable para el audio
+
     // Variables para el movimiento del jLabel7
     private Timer moveTimer7;
     private int moveDirection7 = 1;
@@ -113,7 +115,7 @@ public class LevelOne extends javax.swing.JFrame {
             }
             label.setLocation(x, y);
            }
-    
+   
         private void moveToNextFrame() {
             stopSound(); // Detiene el audio antes de cerrar la ventana
             dispose(); // Cierra la ventana actual
@@ -121,13 +123,25 @@ public class LevelOne extends javax.swing.JFrame {
         }
 
         private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
-            sound.play();
+            try {
+                URL soundURL = getClass().getResource("../audios/LevelsSuspenso.wav");
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+                clip = AudioSystem.getClip();
+                clip.open(audioStream);
+
+                // Reducir el volumen a la mitad
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(-15.0f); // Ajusta el valor según tus necesidades
+
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
         }
 
         private void stopSound() {
-            if (sound != null) {
-                sound.stop();
+            if (clip != null) {
+            clip.stop();
             }
         }
     
