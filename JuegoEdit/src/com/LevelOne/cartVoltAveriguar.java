@@ -72,7 +72,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         }
 
         private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/LevelsSuspenso.wav"));
+            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/EsperaMusica_1.wav"));
             sound.play();
         }
 
@@ -143,14 +143,29 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         botCartYellow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
         botCartYellow.setBorder(null);
         botCartYellow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCartYellow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botCartYellowActionPerformed(evt);
+            }
+        });
 
         botCatRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
         botCatRed.setBorder(null);
         botCatRed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCatRed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botCatRedActionPerformed(evt);
+            }
+        });
 
         botCartBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
         botCartBlue.setBorder(null);
         botCartBlue.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCartBlue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botCartBlueActionPerformed(evt);
+            }
+        });
 
         botCartGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
         botCartGreen.setBorder(null);
@@ -194,7 +209,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 70));
 
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 150, 150));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 150, 150));
 
         jPanel3.setBackground(new java.awt.Color(200, 81, 3));
 
@@ -238,6 +253,18 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     private void botCartGreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartGreenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botCartGreenActionPerformed
+
+    private void botCartYellowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartYellowActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botCartYellowActionPerformed
+
+    private void botCatRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCatRedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botCatRedActionPerformed
+
+    private void botCartBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartBlueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botCartBlueActionPerformed
 
     /**
      * @param args the command line arguments

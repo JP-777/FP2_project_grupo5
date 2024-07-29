@@ -4,19 +4,20 @@
  */
 package com.Login;
 
+import PruebaRegistro.Usuario;
 import java.applet.AudioClip;
-
-/**
- *
- * @author Daniusw
- */
+import javax.swing.JOptionPane;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 public class Login extends javax.swing.JFrame {
 
         private AudioClip sound;
+        PruebaRegistro.Registrito regis = new PruebaRegistro.Registrito();
 
     public Login() {
         initComponents();
         playSoundLogin();
+        botRegistrarUsuario.setEnabled(true);
     }
     
     //Sonido
@@ -304,6 +305,18 @@ public class Login extends javax.swing.JFrame {
         com.confirmacion.confirmacion newConfirmacion = new com.confirmacion.confirmacion();
         newConfirmacion.setVisible(true);
         this.dispose();
+        
+        Usuario user = new Usuario();
+        String password=String.valueOf(passwordPart.getPassword());
+        user.setNombre(userPart1.getText());
+        user.setPassword(password);
+        user.setUser(userpLAYPart.getText());
+        user.setEdad(edadPart.getSelectedItem().toString());
+        if(regis.create(user)){
+            JOptionPane.showMessageDialog(this, "Se creo correctamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "Error al insertar Usuario");
+        }
     }//GEN-LAST:event_botRegistrarUsuarioActionPerformed
 
     private void botRegresarCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRegresarCreateAccountActionPerformed
@@ -311,6 +324,7 @@ public class Login extends javax.swing.JFrame {
         com.Juego.menu_02 newMenu = new com.Juego.menu_02();
         newMenu.setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_botRegresarCreateAccountActionPerformed
 
     private void userPart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userPart1ActionPerformed
