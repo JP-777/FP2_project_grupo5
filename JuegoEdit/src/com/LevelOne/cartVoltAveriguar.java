@@ -7,11 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import java.util.Random;
+import javax.swing.*;
 
-/**
- *
- * @author Daniusw
- */
 public class cartVoltAveriguar extends javax.swing.JFrame {
 
     //agregando
@@ -24,7 +21,10 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     private Timer countdownTimer;
     private int remainingTime = DELAY / 1000; // Tiempo restante en segundos
     
-    
+    // para jugabilidad de adivinar
+    private JButton[] cartas;
+    private JButton cartaAleatoria;   
+    private boolean cartaSeleccionada = false; // Para verificar si se ha seleccionado una carta
     
     
     public cartVoltAveriguar() {
@@ -32,6 +32,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         startTimer();
         playSound(); // Reproduce el audio al iniciar
         startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva    }
+        configurarCartas(); // acciones de eventos de las cartas (para adivinar)
     }
     
     private void startCountdownTimer() {
@@ -45,45 +46,105 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
                     InfTime.setText(String.format("%02d:%02d", minutes, seconds));
                 } else {
                     countdownTimer.stop();
+                    if (!cartaSeleccionada){
+                        moveToNextFrame(); // Mueve al frame de tiempo agotado si no se ha seleccionado ninguna carta
+                    }
                 }
             }
         });
         countdownTimer.start();
     }
     
-    
-    
-    
     //agregado
-        private void startTimer() {
+    private void startTimer() {
         timer = new Timer(DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
-                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+                if (!cartaSeleccionada) {
+                    moveToNextFrame(); // Mueve al frame de tiempo agotado si no se ha seleccionado ninguna carta
+                }
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
         timer.start(); // Inicia el temporizador
-        }
+    }
         
+    // añadido sistema de juego adivinar
+    private void configurarCartas() {
+        // arreglo de botones de colores
+        cartas = new JButton[]{botCartBlue, botCartGreen, botCartYellow, botCartRed};
+        for (JButton carta : cartas) {
+            carta.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    cartaSeleccionada = true; // una carta ha sido escogida
+                    // cada carta(boton) se verificará al ser presionada
+                    verificarAdivinanza(carta);
+                }
+            });
+        }
+        mostrarCartaAleatoria(); 
+    }
+    
+    // oculta las cartas
+    private void voltearCartas() { 
+        for (JButton carta : cartas) {
+            carta.setIcon(new ImageIcon(getClass().getResource("/com/images/reversoCartas.png")));
+        }
+    }
+    
+    // carta aleatorio para ser adivinada
+    private void mostrarCartaAleatoria() {
+        int indiceAleatorio = new Random().nextInt(cartas.length);
+        cartaAleatoria = cartas[indiceAleatorio];
         
-        private void moveToNextFrame() {
-            stopSound(); // Detiene el audio antes de cerrar la ventana
-            dispose(); // Cierra la ventana actual
-            new TimeAgotadoColors().setVisible(true); // Abre la siguiente ventana
+        // jLabel carta para adivinar
+        String[] colores = {"Blue", "Green", "Yellow", "Red"};
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/com/images/color" + colores[indiceAleatorio] + ".png")));
+    }
+    
+    // verificar si se escogio el color correcto
+    private void verificarAdivinanza(JButton carta) {
+        if (carta == cartaAleatoria) {
+            new com.LevelOne.Anteris.CorrectoColor().setVisible(true); // Abre el frame de carta correcta
+            enseñarColorEnIngles(carta);
+        } else {
+            new com.LevelOne.Anteris.ErrorColors().setVisible(true); // Abre el frame de carta incorrecta
+            enseñarColorEnIngles(carta);
         }
+        dispose(); // Cierra la ventana actual
+    }
+    
+    // ejecutar frame de color correcto (enseñar en ingles)
+    private void enseñarColorEnIngles(JButton carta) {
+        if (carta == botCartBlue)
+            new com.LevelOne.Respuestas.Blue_english().setVisible(true);
+        if (carta == botCartGreen) 
+            new com.LevelOne.Respuestas.Green_english().setVisible(true);
+        if (carta == botCartYellow) 
+            new com.LevelOne.Respuestas.Red_english().setVisible(true);
+        if (carta == botCartRed) 
+            new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
+        dispose();
+    }
+    
+    private void moveToNextFrame() {
+        stopSound(); // Detiene el audio antes de cerrar la ventana
+        dispose(); // Cierra la ventana actual
+        new TimeAgotadoColors().setVisible(true); // Abre la siguiente ventana
+    }
 
-        private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/EsperaMusica_1.wav"));
-            sound.play();
-        }
+    private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("../audios/EsperaMusica_1.wav"));
+        sound.play();
+    }
 
-        private void stopSound() {
-            if (sound != null) {
-                sound.stop();
-            }
+    private void stopSound() {
+        if (sound != null) {
+            sound.stop();
         }
+    }
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,7 +161,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         InfTime = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         botCartYellow = new javax.swing.JButton();
-        botCatRed = new javax.swing.JButton();
+        botCartRed = new javax.swing.JButton();
         botCartBlue = new javax.swing.JButton();
         botCartGreen = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -155,12 +216,12 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
             }
         });
 
-        botCatRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
-        botCatRed.setBorder(null);
-        botCatRed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botCatRed.addActionListener(new java.awt.event.ActionListener() {
+        botCartRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/reversoCartas.png"))); // NOI18N
+        botCartRed.setBorder(null);
+        botCartRed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botCartRed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botCatRedActionPerformed(evt);
+                botCartRedActionPerformed(evt);
             }
         });
 
@@ -192,7 +253,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(botCartBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botCatRed, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botCartRed, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botCartGreen, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(128, Short.MAX_VALUE))
@@ -204,7 +265,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botCartYellow, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botCartBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botCatRed, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botCartRed, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botCartGreen, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
@@ -254,27 +315,19 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botCartGreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartGreenActionPerformed
-        com.Logros.Logros newLogros = new com.Logros.Logros();
-        newLogros.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_botCartGreenActionPerformed
 
     private void botCartYellowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartYellowActionPerformed
-        com.Logros.Logros newLogros = new com.Logros.Logros();
-        newLogros.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_botCartYellowActionPerformed
 
-    private void botCatRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCatRedActionPerformed
-        com.Logros.Logros newLogros = new com.Logros.Logros();
-        newLogros.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_botCatRedActionPerformed
+    private void botCartRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartRedActionPerformed
+        
+    }//GEN-LAST:event_botCartRedActionPerformed
 
     private void botCartBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartBlueActionPerformed
-        com.Logros.Logros newLogros = new com.Logros.Logros();
-        newLogros.setVisible(true);
-        this.dispose();
+       
     }//GEN-LAST:event_botCartBlueActionPerformed
 
     /**
@@ -317,8 +370,8 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     private javax.swing.JPanel InfTimeCuestios;
     private javax.swing.JButton botCartBlue;
     private javax.swing.JButton botCartGreen;
+    private javax.swing.JButton botCartRed;
     private javax.swing.JButton botCartYellow;
-    private javax.swing.JButton botCatRed;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

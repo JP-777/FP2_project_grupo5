@@ -8,12 +8,12 @@ package com.LevelOne.Respuestas;
  *
  * @author user
  */
-public class Green_Yellow extends javax.swing.JFrame {
+public class Green_english extends javax.swing.JFrame {
 
     /**
      * Creates new form Green_Yellow
      */
-    public Green_Yellow() {
+    public Green_english() {
         initComponents();
     }
 
@@ -29,7 +29,6 @@ public class Green_Yellow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 550));
 
         jPanel1.setBackground(new java.awt.Color(255, 213, 129));
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 550));
@@ -77,20 +76,21 @@ public class Green_Yellow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Green_Yellow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Green_english.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Green_Yellow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Green_english.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Green_Yellow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Green_english.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Green_Yellow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Green_english.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Green_Yellow().setVisible(true);
+                new Green_english().setVisible(true);
             }
         });
     }
