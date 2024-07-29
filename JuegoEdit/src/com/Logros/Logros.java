@@ -69,11 +69,26 @@ public class Logros extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logrosCCCC.png"))); // NOI18N
 
-        Perfect.setText("jButton2");
+        Perfect.setText("Nivel3");
+        Perfect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerfectActionPerformed(evt);
+            }
+        });
 
-        SowSow.setText("jButton3");
+        SowSow.setText("Nivel2");
+        SowSow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SowSowActionPerformed(evt);
+            }
+        });
 
-        Preocupate.setText("jButton4");
+        Preocupate.setText("Nivel1");
+        Preocupate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreocupateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,9 +105,9 @@ public class Logros extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addComponent(Perfect)
-                .addGap(188, 188, 188)
-                .addComponent(SowSow)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SowSow)
+                .addGap(209, 209, 209)
                 .addComponent(Preocupate)
                 .addGap(188, 188, 188))
         );
@@ -108,8 +123,9 @@ public class Logros extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Perfect)
-                    .addComponent(SowSow)
-                    .addComponent(Preocupate))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Preocupate)
+                        .addComponent(SowSow)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -133,7 +149,28 @@ public class Logros extends javax.swing.JFrame {
         com.Juego.menu_02 newMenu = new com.Juego.menu_02();
         newMenu.setVisible(true);
         this.dispose();
+        stopSound();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void PerfectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfectActionPerformed
+        com.Logros.Datos.Logros3 logro3 = new com.Logros.Datos.Logros3();
+        logro3.setVisible(true);
+        this.dispose();
+        stopSound();
+    }//GEN-LAST:event_PerfectActionPerformed
+
+    private void SowSowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SowSowActionPerformed
+        com.Logros.Datos.Logros2 logro2 = new com.Logros.Datos.Logros2();
+        logro2.setVisible(true);
+        this.dispose();
+        stopSound();
+    }//GEN-LAST:event_SowSowActionPerformed
+
+    private void PreocupateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreocupateActionPerformed
+        com.Logros.Datos.Logros1 logro1 = new com.Logros.Datos.Logros1();
+        logro1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_PreocupateActionPerformed
 
     /**
      * @param args the command line arguments

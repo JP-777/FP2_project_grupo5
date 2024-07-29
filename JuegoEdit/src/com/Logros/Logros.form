@@ -68,9 +68,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                   <Component id="Perfect" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
-                  <Component id="SowSow" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="SowSow" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
                   <Component id="Preocupate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
               </Group>
@@ -90,8 +90,10 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Perfect" min="-2" max="-2" attributes="0"/>
-                      <Component id="SowSow" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Preocupate" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="Preocupate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SowSow" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="27" max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="405" max="-2" attributes="0"/>
@@ -139,18 +141,27 @@
         </Component>
         <Component class="javax.swing.JButton" name="Perfect">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jButton2"/>
+            <Property name="text" type="java.lang.String" value="Nivel3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PerfectActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="SowSow">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jButton3"/>
+            <Property name="text" type="java.lang.String" value="Nivel2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SowSowActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Preocupate">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jButton4"/>
+            <Property name="text" type="java.lang.String" value="Nivel1"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PreocupateActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

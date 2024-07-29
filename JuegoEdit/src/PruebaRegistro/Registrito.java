@@ -33,6 +33,62 @@ public class Registrito {
             return false;
         }
     }
-    
+    public ArrayList<Usuario> logro1(){
+        ArrayList<Usuario> lista = new ArrayList<Usuario>();
+        try {
+            PreparedStatement ps=cx.conectar().prepareStatement("SELECT nombre, nombre_jugador FROM usuarios WHERE nivel = '1'");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Usuario u= new Usuario();
+                u.setNombre(rs.getString("nombre"));
+                u.setUser(rs.getString("nombre_jugador"));
+                lista.add(u);
+            }
+            ps.close();
+            ps=null;
+            cx.desconectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrito.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
+    public ArrayList<Usuario> logro2(){
+        ArrayList<Usuario> lista = new ArrayList<Usuario>();
+        try {
+            PreparedStatement ps=cx.conectar().prepareStatement("SELECT nombre, nombre_jugador FROM usuarios WHERE nivel = '2'");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Usuario u= new Usuario();
+                u.setNombre(rs.getString("nombre"));
+                u.setUser(rs.getString("nombre_jugador"));
+                lista.add(u);
+            }
+            ps.close();
+            ps=null;
+            cx.desconectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrito.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
+    public ArrayList<Usuario> logro3(){
+        ArrayList<Usuario> lista = new ArrayList<Usuario>();
+        try {
+            PreparedStatement ps=cx.conectar().prepareStatement("SELECT nombre, nombre_jugador FROM usuarios WHERE nivel = '3'");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Usuario u= new Usuario();
+                u.setNombre(rs.getString("nombre"));
+                u.setUser(rs.getString("nombre_jugador"));
+                lista.add(u);
+            }
+            ps.close();
+            ps=null;
+            cx.desconectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrito.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
         
 }
