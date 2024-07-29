@@ -7,6 +7,7 @@ package com.LevelOne.Anteris;
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import javax.swing.Timer;
 
 /**
@@ -43,9 +44,21 @@ public class TimeAgotadoColors extends javax.swing.JFrame {
         
         private void moveToNextFrame() {
             stopSound(); // Detiene el audio antes de cerrar la ventana
-            dispose(); // Cierra la ventana actual
-            // Abre la siguiente ventana dependiendo la carta q no pudo adivinar
-            new TimeAgotadoColors().setVisible(true); //acomodar
+        
+            int indiceAleatorio = new Random().nextInt(4);
+
+            // Compara el ícono del botón colorEnseñar con los íconos definidos
+            if (indiceAleatorio == 1) {
+                new com.LevelOne.Respuestas.Blue_english().setVisible(true);
+            } else if (indiceAleatorio == 2) {
+                new com.LevelOne.Respuestas.Green_english().setVisible(true);
+            } else if (indiceAleatorio == 3) {
+                new com.LevelOne.Respuestas.Red_english().setVisible(true);
+            } else if (indiceAleatorio == 4) {
+                new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
+            }
+
+            dispose(); // Cierra la ventana actual después de abrir la nueva
         }
 
         private void playSound() {

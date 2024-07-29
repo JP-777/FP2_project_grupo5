@@ -45,9 +45,11 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
                     InfTime.setText(String.format("%02d:%02d", minutes, seconds));
                 } else {
                     countdownTimer.stop();
+                    /*evitar doble frame
                     if (!cartaSeleccionada){
                         moveToNextFrame(); // Mueve al frame de tiempo agotado si no se ha seleccionado ninguna carta
                     }
+                    */
                 }
             }
         });
