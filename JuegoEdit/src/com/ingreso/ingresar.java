@@ -264,12 +264,11 @@ public class ingresar extends javax.swing.JFrame {
             if(rs.next()){
                 stopSound();
                 com.LevelOne.LevelOnePresentacion newRegresarMenu = new  com.LevelOne.LevelOnePresentacion();
-                JOptionPane.showMessageDialog(this, "EL USUARIO ESTA EN LA BD");
                 newRegresarMenu.setVisible(true);
                 stopSound();
                 this.dispose();
             }else{
-                JOptionPane.showMessageDialog(this, "EL USUARIO NO EXISTE EN LA BD");
+                JOptionPane.showMessageDialog(this, "EL USUARIO NO EXISTE O LA CONTRASEÑA ES INCORRECTA");
             }
         } catch (SQLException ex) {
             Logger.getLogger(loginn.class.getName()).log(Level.SEVERE, null, ex);

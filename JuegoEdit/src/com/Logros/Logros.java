@@ -95,7 +95,7 @@ public class Logros extends javax.swing.JFrame {
                 SowSowActionPerformed(evt);
             }
         });
-        jPanel1.add(SowSow, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 70, 30));
+        jPanel1.add(SowSow, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 80, 30));
 
         Preocupate.setBackground(new java.awt.Color(200, 81, 3));
         Preocupate.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -146,6 +146,7 @@ public class Logros extends javax.swing.JFrame {
         com.Logros.Datos.Logros1 logro1 = new com.Logros.Datos.Logros1();
         logro1.setVisible(true);
         this.dispose();
+        stopSound();
     }//GEN-LAST:event_PreocupateActionPerformed
 
     private void PerfectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfectActionPerformed
