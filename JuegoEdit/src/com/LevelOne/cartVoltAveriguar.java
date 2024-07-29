@@ -1,10 +1,12 @@
 
 package com.LevelOne;
 
+import com.LevelOne.Anteris.TimeAgotado;
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import java.util.Random;
 
 /**
  *
@@ -21,7 +23,6 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     // Variable para el temporizador del tiempo restante
     private Timer countdownTimer;
     private int remainingTime = DELAY / 1000; // Tiempo restante en segundos
-    
     
     
     
@@ -68,7 +69,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         private void moveToNextFrame() {
             stopSound(); // Detiene el audio antes de cerrar la ventana
             dispose(); // Cierra la ventana actual
-            new NextFrame().setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+            new TimeAgotado().setVisible(true); // Abre la siguiente ventana
         }
 
         private void playSound() {
@@ -81,7 +82,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
                 sound.stop();
             }
         }
-    
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,6 +93,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         InfTimeCuestios = new javax.swing.JPanel();
         InfTime = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -100,7 +102,6 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         botCartBlue = new javax.swing.JButton();
         botCartGreen = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -109,6 +110,9 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 113));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 180, 230));
 
         InfTimeCuestios.setBackground(new java.awt.Color(200, 81, 3));
         InfTimeCuestios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -181,35 +185,32 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(18, 18, 18)
                 .addComponent(botCartYellow, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botCartBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botCatRed, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botCartGreen, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(71, 71, 71)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botCartYellow, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botCatRed, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botCartBlue, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botCatRed, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botCartGreen, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 108, 890, 390));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gifs/NewBarraProgres (2).gif"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 70));
-
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 150, 150));
 
         jPanel3.setBackground(new java.awt.Color(200, 81, 3));
 
@@ -251,19 +252,27 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botCartGreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartGreenActionPerformed
-        // TODO add your handling code here:
+        com.Logros.Logros newLogros = new com.Logros.Logros();
+        newLogros.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botCartGreenActionPerformed
 
     private void botCartYellowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartYellowActionPerformed
-        // TODO add your handling code here:
+        com.Logros.Logros newLogros = new com.Logros.Logros();
+        newLogros.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botCartYellowActionPerformed
 
     private void botCatRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCatRedActionPerformed
-        // TODO add your handling code here:
+        com.Logros.Logros newLogros = new com.Logros.Logros();
+        newLogros.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botCatRedActionPerformed
 
     private void botCartBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botCartBlueActionPerformed
-        // TODO add your handling code here:
+        com.Logros.Logros newLogros = new com.Logros.Logros();
+        newLogros.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botCartBlueActionPerformed
 
     /**
