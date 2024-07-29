@@ -150,11 +150,11 @@ public class LevelTwo extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         InfTime1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        Title = new javax.swing.JLabel();
         TarAnimPerro = new javax.swing.JLabel();
         TarAnimGato = new javax.swing.JLabel();
         TarAnimCerdo = new javax.swing.JLabel();
         TarAnimLeon = new javax.swing.JLabel();
-        Title = new javax.swing.JLabel();
 
         jPanel4.setBackground(new java.awt.Color(200, 81, 3));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -220,17 +220,17 @@ public class LevelTwo extends javax.swing.JFrame {
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 90));
 
         jPanel2.setBackground(new java.awt.Color(255, 213, 129));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 3, true));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 81, 3), 2, true));
+
+        Title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/TitleLevelTwo.png"))); // NOI18N
 
         TarAnimPerro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botPerro.png"))); // NOI18N
 
-        TarAnimGato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botCat.png"))); // NOI18N
+        TarAnimGato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botGato.png"))); // NOI18N
 
-        TarAnimCerdo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botPig.png"))); // NOI18N
+        TarAnimCerdo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botCerdo.png"))); // NOI18N
 
-        TarAnimLeon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botLion.png"))); // NOI18N
-
-        Title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/TitleLevelTwo.png"))); // NOI18N
+        TarAnimLeon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/botLeon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -239,41 +239,41 @@ public class LevelTwo extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(52, 52, 52)
                         .addComponent(TarAnimPerro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TarAnimGato)
                         .addGap(18, 18, 18)
-                        .addComponent(TarAnimCerdo)
+                        .addComponent(TarAnimGato, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(TarAnimLeon))
+                        .addComponent(TarAnimCerdo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TarAnimLeon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 63, Short.MAX_VALUE))
+                        .addGap(186, 186, 186)
+                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
+                    .addComponent(TarAnimGato, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TarAnimPerro, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TarAnimCerdo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(TarAnimLeon, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addComponent(TarAnimGato, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                            .addComponent(TarAnimLeon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(TarAnimCerdo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(TarAnimPerro, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 51, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 390));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 96, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -50,7 +50,7 @@ public class ErrorColors extends javax.swing.JFrame {
         }
 
         private void playSound() {
-            sound = java.applet.Applet.newAudioClip(getClass().getResource("../../audios/audioMusic.wav"));
+            sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisOne/AudioErrorAcierto.wav"));
             sound.play();
         }
 
@@ -83,7 +83,8 @@ public class ErrorColors extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        MostrarCartaCorrecta.setText("jLabel2");
+        MostrarCartaCorrecta.setToolTipText("");
+        MostrarCartaCorrecta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 1, true));
         jPanel1.add(MostrarCartaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 185, 263));
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 113));
