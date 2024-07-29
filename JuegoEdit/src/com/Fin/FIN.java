@@ -9,7 +9,8 @@ import java.applet.AudioClip;
 
 /**
  *
- * @author user
+ * @author Daniusw, Dieguito, Denilson, El nero
+ *
  */
 public class FIN extends javax.swing.JFrame {
 

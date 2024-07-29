@@ -41,10 +41,10 @@ public class Logros extends javax.swing.JFrame {
         LogrosTitle = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         Perfect = new javax.swing.JButton();
         SowSow = new javax.swing.JButton();
         Preocupate = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -53,8 +53,10 @@ public class Logros extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1000, 550));
 
         jPanel1.setBackground(new java.awt.Color(255, 213, 129));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LogrosTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logrosTitle.png"))); // NOI18N
+        jPanel1.add(LogrosTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 0, -1, 76));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logrosRegresar.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -64,70 +66,52 @@ public class Logros extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 7, 99, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logrosMensajitos.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(833, 0, 167, 66));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logrosCCCC.png"))); // NOI18N
-
+        Perfect.setBackground(new java.awt.Color(200, 81, 3));
+        Perfect.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        Perfect.setForeground(new java.awt.Color(255, 255, 255));
         Perfect.setText("Nivel3");
+        Perfect.setBorder(null);
+        Perfect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Perfect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PerfectActionPerformed(evt);
             }
         });
+        jPanel1.add(Perfect, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 80, 30));
 
+        SowSow.setBackground(new java.awt.Color(255, 153, 51));
+        SowSow.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        SowSow.setForeground(new java.awt.Color(255, 255, 255));
         SowSow.setText("Nivel2");
+        SowSow.setBorder(null);
+        SowSow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SowSow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SowSowActionPerformed(evt);
             }
         });
+        jPanel1.add(SowSow, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 70, 30));
 
+        Preocupate.setBackground(new java.awt.Color(200, 81, 3));
+        Preocupate.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        Preocupate.setForeground(new java.awt.Color(255, 255, 255));
         Preocupate.setText("Nivel1");
+        Preocupate.setBorder(null);
+        Preocupate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Preocupate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PreocupateActionPerformed(evt);
             }
         });
+        jPanel1.add(Preocupate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 80, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LogrosTitle)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(Perfect)
-                .addGap(237, 237, 237)
-                .addComponent(SowSow)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Preocupate)
-                .addGap(188, 188, 188))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jButton1))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LogrosTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Preocupate)
-                    .addComponent(SowSow)
-                    .addComponent(Perfect))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logrosCCCC.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 405));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,13 +135,6 @@ public class Logros extends javax.swing.JFrame {
         stopSound();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void PerfectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfectActionPerformed
-        com.Logros.Datos.Logros3 logro3 = new com.Logros.Datos.Logros3();
-        logro3.setVisible(true);
-        this.dispose();
-        stopSound();
-    }//GEN-LAST:event_PerfectActionPerformed
-
     private void SowSowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SowSowActionPerformed
         com.Logros.Datos.Logros2 logro2 = new com.Logros.Datos.Logros2();
         logro2.setVisible(true);
@@ -170,6 +147,13 @@ public class Logros extends javax.swing.JFrame {
         logro1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_PreocupateActionPerformed
+
+    private void PerfectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfectActionPerformed
+        com.Logros.Datos.Logros3 logro3 = new com.Logros.Datos.Logros3();
+        logro3.setVisible(true);
+        this.dispose();
+        stopSound();
+    }//GEN-LAST:event_PerfectActionPerformed
 
     /**
      * @param args the command line arguments
