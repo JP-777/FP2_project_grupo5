@@ -113,7 +113,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 51, 0), 1, true));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 180, 230));
 
         InfTimeCuestios.setBackground(new java.awt.Color(200, 81, 3));

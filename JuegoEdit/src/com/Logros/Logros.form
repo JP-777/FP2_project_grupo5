@@ -66,11 +66,11 @@
               </Group>
               <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="Perfect" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
                   <Component id="SowSow" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="Preocupate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
               </Group>
@@ -88,12 +88,10 @@
                       <Component id="LogrosTitle" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Perfect" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="Preocupate" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="SowSow" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Preocupate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SowSow" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Perfect" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="27" max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="405" max="-2" attributes="0"/>
