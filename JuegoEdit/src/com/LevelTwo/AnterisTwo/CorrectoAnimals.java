@@ -1,23 +1,92 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.LevelTwo.AnterisTwo;
+
+import com.LevelOne.LevelOne;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.Timer;
 
 
 /**
  *
- * @author user
+ * @author Daniusw, Dieguito, Denilson, El nero
  */
 public class CorrectoAnimals extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TwoCorrect
-     */
+     private static final int DELAY = 7000; // Duración en milisegundos 
+    private Timer timer;
+    
+    private Clip audioClip; // Variable para el audio
+    
+    
     public CorrectoAnimals() {
         initComponents();
+        startTimer();
+        //playSound(); // Reproduce el audio al iniciar
+        playSoundWithReducedVolume(); // Reproduce el audio al iniciar con volumen reducido
+    }
+    
+    //metodos control
+    //agregado
+   private void startTimer() {
+        timer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop(); // Detiene el temporizador
+                stopSound(); // Detiene el audio
+                moveToNextFrame(); // Llama al método para mover a la siguiente ventana
+            }
+        });
+        timer.setRepeats(false); // El temporizador no se repite
+        timer.start(); // Inicia el temporizador
     }
 
+    private void moveToNextFrame() {
+        dispose(); // Cierra la ventana actual
+        new LevelOne().setVisible(true); // Abre la siguiente ventana ()
+    }
+
+    /*private void playSound() {
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("audiosAnterisOne/AudioFelicitacionAcierto.wav"));
+        sound.play();
+    }*/
+
+    private void stopSound() {
+        if (audioClip != null) {
+            audioClip.stop();
+        }
+    }
+    
+    
+    //metodo para reducir el sonido
+    private void playSoundWithReducedVolume() {
+        try {
+            File audioFile = new File(getClass().getResource("audiosAnterisTwo/AudioFelicitacionAcierto.wav").getFile());
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            audioClip = AudioSystem.getClip();
+            audioClip.open(audioStream);
+
+            // Reduce el volumen al 75% del original
+            FloatControl volumeControl = (FloatControl) audioClip.getControl(FloatControl.Type.MASTER_GAIN);
+            float min = volumeControl.getMinimum();
+            float max = volumeControl.getMaximum();
+            float volume = (max - min) * 0.75f + min;
+            volumeControl.setValue(volume);
+
+            audioClip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
