@@ -1,0 +1,25 @@
+Listado de rutas de carpetas
+El n£mero de serie del volumen es 0ECB-1B10
+C:.
+ÃÄÄÄaudios
+ÃÄÄÄconfirmacion
+ÃÄÄÄDudas
+ÃÄÄÄgifs
+ÃÄÄÄimages
+ÃÄÄÄingreso
+ÃÄÄÄJuego
+³   ÀÄÄÄjFramesBasicosDeTodo
+ÃÄÄÄLevelOne
+³   ÃÄÄÄAnteris
+³   ÀÄÄÄRespuestas
+ÃÄÄÄLevelThree
+³   ÃÄÄÄAnterisThree
+³   ÀÄÄÄRespuestas_Numbers
+ÃÄÄÄLevelTwo
+³   ÃÄÄÄAnterisTwo
+³   ÀÄÄÄRespuestas_Animals
+ÃÄÄÄLogin
+ÃÄÄÄLogros
+ÃÄÄÄprincipal
+ÀÄÄÄPruebas
+    ÀÄÄÄEfectos

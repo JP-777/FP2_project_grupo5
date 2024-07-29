@@ -1,0 +1,63 @@
+Listado de rutas de carpetas
+El n£mero de serie del volumen es 0ECB-1B10
+C:.
+ÃÄÄÄbuild
+³   ÀÄÄÄclasses
+³       ÃÄÄÄcom
+³       ³   ÃÄÄÄaudios
+³       ³   ÃÄÄÄconfirmacion
+³       ³   ÃÄÄÄDudas
+³       ³   ÃÄÄÄgifs
+³       ³   ÃÄÄÄimages
+³       ³   ÃÄÄÄingreso
+³       ³   ÃÄÄÄJuego
+³       ³   ³   ÀÄÄÄjFramesBasicosDeTodo
+³       ³   ÃÄÄÄLevelOne
+³       ³   ³   ÃÄÄÄAnteris
+³       ³   ³   ÀÄÄÄRespuestas
+³       ³   ÃÄÄÄLevelThree
+³       ³   ³   ÃÄÄÄAnterisThree
+³       ³   ³   ÀÄÄÄRespuestas_Numbers
+³       ³   ÃÄÄÄLevelTwo
+³       ³   ³   ÃÄÄÄAnteris
+³       ³   ³   ÃÄÄÄAnterisTwo
+³       ³   ³   ÀÄÄÄRespuestas_Animals
+³       ³   ÃÄÄÄLogin
+³       ³   ÃÄÄÄLogros
+³       ³   ÃÄÄÄprincipal
+³       ³   ÀÄÄÄPruebas
+³       ³       ÀÄÄÄEfectos
+³       ÃÄÄÄConexion
+³       ÃÄÄÄjuego
+³       ÃÄÄÄPruebaRegistro
+³       ÀÄÄÄPruebasacceso
+ÃÄÄÄnbproject
+³   ÀÄÄÄprivate
+ÃÄÄÄsrc
+³   ÃÄÄÄcom
+³   ³   ÃÄÄÄaudios
+³   ³   ÃÄÄÄconfirmacion
+³   ³   ÃÄÄÄDudas
+³   ³   ÃÄÄÄgifs
+³   ³   ÃÄÄÄimages
+³   ³   ÃÄÄÄingreso
+³   ³   ÃÄÄÄJuego
+³   ³   ³   ÀÄÄÄjFramesBasicosDeTodo
+³   ³   ÃÄÄÄLevelOne
+³   ³   ³   ÃÄÄÄAnteris
+³   ³   ³   ÀÄÄÄRespuestas
+³   ³   ÃÄÄÄLevelThree
+³   ³   ³   ÃÄÄÄAnterisThree
+³   ³   ³   ÀÄÄÄRespuestas_Numbers
+³   ³   ÃÄÄÄLevelTwo
+³   ³   ³   ÃÄÄÄAnterisTwo
+³   ³   ³   ÀÄÄÄRespuestas_Animals
+³   ³   ÃÄÄÄLogin
+³   ³   ÃÄÄÄLogros
+³   ³   ÃÄÄÄprincipal
+³   ³   ÀÄÄÄPruebas
+³   ³       ÀÄÄÄEfectos
+³   ÃÄÄÄConexion
+³   ÃÄÄÄPruebaRegistro
+³   ÀÄÄÄPruebasacceso
+ÀÄÄÄtest
