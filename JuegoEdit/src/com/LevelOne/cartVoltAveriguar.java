@@ -1,7 +1,7 @@
 
 package com.LevelOne;
 
-import com.LevelOne.Anteris.TimeAgotado;
+import com.LevelOne.Anteris.TimeAgotadoColors;
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,6 +52,8 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     }
     
     
+    
+    
     //agregado
         private void startTimer() {
         timer = new Timer(DELAY, new ActionListener() {
@@ -69,7 +71,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         private void moveToNextFrame() {
             stopSound(); // Detiene el audio antes de cerrar la ventana
             dispose(); // Cierra la ventana actual
-            new TimeAgotado().setVisible(true); // Abre la siguiente ventana
+            new TimeAgotadoColors().setVisible(true); // Abre la siguiente ventana
         }
 
         private void playSound() {
