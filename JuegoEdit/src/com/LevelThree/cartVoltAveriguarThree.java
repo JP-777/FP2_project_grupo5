@@ -24,8 +24,9 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
     private int remainingTime = DELAY / 1000; // Tiempo restante en segundos
     
     // para jugabilidad de adivinar
-    private JButton[] cartas;
-    private JButton cartaAleatoria;   
+    private JButton[] cartasNumeros = new JButton[4];
+    private JButton[] cartasNumerosVolteados;
+    private JButton cartaAleatoria; // carta para adivinar
     private boolean cartaSeleccionada = false; // Para verificar si se ha seleccionado una carta
     
     public cartVoltAveriguarThree() {
@@ -33,7 +34,21 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
         startTimer();
         playSound(); // Reproduce el audio al iniciar
         startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva
+        llenarCartasNumeros(); // llena arreglo cartasColores
         configurarCartas(); // acciones de eventos de las cartas (para adivinar)
+    }
+    
+    private void llenarCartasNumeros(){
+        String[] colores = {"One", "Two", "Three", "Four"};
+        
+        // llenar el arreglo de botones de colores
+        int i = 0;
+        for (JButton cartaColor : cartasNumeros){
+            cartaColor = new JButton();
+            cartaColor.setIcon(new ImageIcon(getClass().getResource("/com/images/bot" + colores[i] + ".png")));
+            cartasNumeros[i] = cartaColor;
+            i++;
+        }
     }
 
     private void startCountdownTimer() {
@@ -72,44 +87,54 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
     // añadido sistema de juego adivinar
     private void configurarCartas() {
         // arreglo de botones de numeros
-        cartas = new JButton[]{botCardUno, botCardDos, botCardTres, botCardCuatro};
-        for (JButton carta : cartas) {
+        cartasNumerosVolteados = new JButton[]{botCardUno, botCardDos, botCardTres, botCardCuatro};
+        int aux = 1;
+        for (JButton carta : cartasNumerosVolteados) {
             carta.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     cartaSeleccionada = true; // una carta ha sido escogida
-                    stopSound();
                     // cada carta(boton) se verificará al ser presionada
-                    verificarAdivinanza(carta);
+                    stopSound();
+                    //verificando depende del boton clickeado
+                    if (carta == botCardUno)
+                        verificarAdivinanza(cartasNumeros[0]);
+                    else if (carta == botCardDos)
+                        verificarAdivinanza(cartasNumeros[1]);
+                    else if (carta == botCardTres)
+                        verificarAdivinanza(cartasNumeros[2]);
+                    else if (carta == botCardCuatro)
+                        verificarAdivinanza(cartasNumeros[3]);   
                 }
             });
+            aux++;
         }
         mostrarCartaAleatoria(); 
     }
     
     // oculta las cartas
     private void voltearCartas() { 
-        for (JButton carta : cartas) {
+        for (JButton carta : cartasNumerosVolteados) {
             carta.setIcon(new ImageIcon(getClass().getResource("/com/images/reversoCartas.png")));
         }
     }
     
     // carta aleatorio para ser adivinada
     private void mostrarCartaAleatoria() {
-        int indiceAleatorio = new Random().nextInt(cartas.length);
-        cartaAleatoria = cartas[indiceAleatorio];
+        int indiceAleatorio = new Random().nextInt(cartasNumeros.length);
+        cartaAleatoria = cartasNumeros[indiceAleatorio];
         
         // jLabel carta para adivinar
         String[] animales = {"One", "Two", "Three", "Four"};
-        jLabel3.setIcon(new ImageIcon(getClass().getResource("/com/images/bot" + animales[indiceAleatorio] + ".png")));
+        jLabel3.setIcon(cartaAleatoria.getIcon());
     }
     
     // verificar si se escogio el numero correcto
     private void verificarAdivinanza(JButton carta) {
         if (carta == cartaAleatoria) {
-            new com.LevelThree.AnterisThree.CorrectoNumbers(cartaAleatoria, botCardUno, botCardDos, botCardTres, botCardCuatro).setVisible(true); // Abre el frame de carta correcta
+            new com.LevelThree.AnterisThree.CorrectoNumbers(cartaAleatoria, cartasNumeros[0], cartasNumeros[1], cartasNumeros[2], cartasNumeros[3]).setVisible(true); // Abre el frame de carta correcta
         } else {
-            new com.LevelThree.AnterisThree.ErrorNumbers(cartaAleatoria, botCardUno, botCardDos, botCardTres, botCardCuatro).setVisible(true); // Abre el frame de carta incorrecta
+            new com.LevelThree.AnterisThree.ErrorNumbers(cartaAleatoria, cartasNumeros[0], cartasNumeros[1], cartasNumeros[2], cartasNumeros[3]).setVisible(true); // Abre el frame de carta incorrecta
         }
         dispose(); // Cierra la ventana actual
     }
@@ -117,7 +142,7 @@ public class cartVoltAveriguarThree extends javax.swing.JFrame {
     private void moveToNextFrame() {
         stopSound(); // Detiene el audio antes de cerrar la ventana
         dispose(); // Cierra la ventana actual
-        new com.LevelThree.AnterisThree.TimeAgotadoNumbers(cartaAleatoria, botCardUno, botCardDos, botCardTres, botCardCuatro).setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        new com.LevelThree.AnterisThree.TimeAgotadoNumbers(cartaAleatoria, cartasNumeros[0], cartasNumeros[1], cartasNumeros[2], cartasNumeros[3]).setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
     }
 
         private void playSound() {

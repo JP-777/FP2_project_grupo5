@@ -24,8 +24,9 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     private int remainingTime = DELAY / 1000; // Tiempo restante en segundos
     
     // para jugabilidad de adivinar
-    private JButton[] cartas;
-    private JButton cartaAleatoria;   
+    private JButton[] cartasColores = new JButton[4];
+    private JButton[] cartasColoresVolteadas;
+    private JButton cartaAleatoria; // carta para adivinar
     private boolean cartaSeleccionada = false; // Para verificar si se ha seleccionado una carta
     
     
@@ -34,7 +35,21 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
         startTimer();
         playSound(); // Reproduce el audio al iniciar
         startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva
+        llenarCartasNumeros(); // llena arreglo cartasColores
         configurarCartas(); // acciones de eventos de las cartas (para adivinar)
+    }
+    
+    private void llenarCartasNumeros(){
+        String[] colores = {"Yellow", "Blue", "Red", "Green"};
+        
+        // llenar el arreglo de botones de colores
+        int i = 0;
+        for (JButton cartaColor : cartasColores){
+            cartaColor = new JButton();
+            cartaColor.setIcon(new ImageIcon(getClass().getResource("/com/images/color" + colores[i] + ".png")));
+            cartasColores[i] = cartaColor;
+            i++;
+        }
     }
     
     private void startCountdownTimer() {
@@ -77,43 +92,54 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     // añadido sistema de juego adivinar
     private void configurarCartas() {
         // arreglo de botones de colores
-        cartas = new JButton[]{botCartBlue, botCartGreen, botCartYellow, botCartRed};
-        for (JButton carta : cartas) {
+        cartasColoresVolteadas = new JButton[]{botCartYellow, botCartBlue, botCartRed, botCartGreen};
+        int aux = 1;
+        for (JButton carta : cartasColoresVolteadas) {
             carta.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     cartaSeleccionada = true; // una carta ha sido escogida
                     // cada carta(boton) se verificará al ser presionada
-                    verificarAdivinanza(carta);
+                    
+                    //verificando depende del boton clickeado
+                    if (carta == botCartYellow)
+                        verificarAdivinanza(cartasColores[0]);
+                    else if (carta == botCartBlue)
+                        verificarAdivinanza(cartasColores[1]);
+                    else if (carta == botCartRed)
+                        verificarAdivinanza(cartasColores[2]);
+                    else if (carta == botCartGreen)
+                        verificarAdivinanza(cartasColores[3]);                      
                 }
             });
+            aux++;
         }
         mostrarCartaAleatoria(); 
     }
     
     // oculta las cartas
     private void voltearCartas() { 
-        for (JButton carta : cartas) {
+        for (JButton carta : cartasColoresVolteadas) {
             carta.setIcon(new ImageIcon(getClass().getResource("/com/images/reversoCartas.png")));
         }
     }
     
     // carta aleatorio para ser adivinada
     private void mostrarCartaAleatoria() {
-        int indiceAleatorio = new Random().nextInt(cartas.length);
-        cartaAleatoria = cartas[indiceAleatorio];
+        int indiceAleatorio = new Random().nextInt(cartasColores.length);
+        cartaAleatoria = cartasColores[indiceAleatorio];
         
         // jLabel carta para adivinar
-        String[] colores = {"Blue", "Green", "Yellow", "Red"};
-        jLabel1.setIcon(new ImageIcon(getClass().getResource("/com/images/color" + colores[indiceAleatorio] + ".png")));
+        jLabel1.setIcon(cartaAleatoria.getIcon());
     }
     
     // verificar si se escogio el color correcto
     private void verificarAdivinanza(JButton carta) {
         if (carta == cartaAleatoria) {
-            new com.LevelOne.Anteris.CorrectoColor(cartaAleatoria, botCartBlue, botCartGreen, botCartYellow, botCartRed).setVisible(true); // Abre el frame de carta correcta  
+            // cartaSeleccionada = cartaAleatoria
+            new com.LevelOne.Anteris.CorrectoColor(cartaAleatoria, cartasColores[0], cartasColores[1], cartasColores[2], cartasColores[3]).setVisible(true); // Abre el frame de carta correcta  
         } else {
-            new com.LevelOne.Anteris.ErrorColors(cartaAleatoria, botCartBlue, botCartGreen, botCartYellow, botCartRed).setVisible(true); // Abre el frame de carta incorrecta
+            new com.LevelOne.Anteris.ErrorColors(cartaAleatoria, cartasColores[0], cartasColores[1], cartasColores[2], cartasColores[3]).setVisible(true); // Abre el frame de carta incorrecta
         }
         dispose(); // Cierra la ventana actual
     }
@@ -121,7 +147,7 @@ public class cartVoltAveriguar extends javax.swing.JFrame {
     private void moveToNextFrame() {
         stopSound(); // Detiene el audio antes de cerrar la ventana
         dispose(); // Cierra la ventana actual
-        new TimeAgotadoColors(cartaAleatoria, botCartBlue, botCartGreen, botCartYellow, botCartRed).setVisible(true); // Abre la siguiente ventana
+        new TimeAgotadoColors(cartaAleatoria, cartasColores[0], cartasColores[1], cartasColores[2], cartasColores[3]).setVisible(true); // Abre la siguiente ventana
     }
 
     private void playSound() {

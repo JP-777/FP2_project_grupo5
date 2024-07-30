@@ -54,7 +54,7 @@ public class CorrectoAnimals extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
                 stopSound(); // Detiene el audio
-                ensenarColorEnIngles(); // Llama al método para mover a la siguiente ventana
+                ensenarAnimalEnIngles(); // Llama al método para mover a la siguiente ventana
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
@@ -62,7 +62,7 @@ public class CorrectoAnimals extends javax.swing.JFrame {
     }
    
     // 
-    private void ensenarColorEnIngles() {
+    private void ensenarAnimalEnIngles() {
         stopSound();
         if (cartaAleatoria == perro)
             new com.LevelTwo.Respuestas_Animals.Perro_english().setVisible(true);

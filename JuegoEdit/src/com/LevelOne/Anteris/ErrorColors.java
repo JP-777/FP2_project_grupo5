@@ -23,19 +23,22 @@ public class ErrorColors extends javax.swing.JFrame {
     private AudioClip sound; // Variable para el audio
     
     private JButton cartaAleatoria; // Variable para almacenar la carta aleatoria de cartVoltAveriguar 
-    private JButton blue;
-    private JButton green;
     private JButton yellow;
+    private JButton blue;
     private JButton red;
+    private JButton green;
     
-    public ErrorColors(JButton cartaAleatoria, JButton b, JButton g, JButton y, JButton r) {
+    public ErrorColors(JButton cartaAleatoria, JButton y, JButton b, JButton r, JButton g) {
         this.cartaAleatoria = cartaAleatoria;
-        blue = b;
-        green = g;
         yellow = y;
+        blue = b;
         red = r;
+        green = g;
         
         initComponents();
+        
+        MostrarCartaCorrecta.setIcon(cartaAleatoria.getIcon());
+                
         startTimer();
         playSound(); // Reproduce el audio al iniciar
     }
@@ -55,16 +58,17 @@ public class ErrorColors extends javax.swing.JFrame {
     }
         
         
+    // 
     private void ensenarColorEnIngles() {
         stopSound();
-        if (cartaAleatoria == blue)
+        if (cartaAleatoria == yellow)
+            new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
+        if (cartaAleatoria == blue) 
             new com.LevelOne.Respuestas.Blue_english().setVisible(true);
+        if (cartaAleatoria == red) 
+            new com.LevelOne.Respuestas.Red_english().setVisible(true);
         if (cartaAleatoria == green) 
             new com.LevelOne.Respuestas.Green_english().setVisible(true);
-        if (cartaAleatoria == yellow) 
-            new com.LevelOne.Respuestas.Red_english().setVisible(true);
-        if (cartaAleatoria == red) 
-            new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
         dispose();
     }
 

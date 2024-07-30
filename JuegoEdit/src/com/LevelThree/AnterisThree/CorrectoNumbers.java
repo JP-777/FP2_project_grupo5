@@ -56,7 +56,7 @@ public class CorrectoNumbers extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
                 stopSound(); // Detiene el audio
-                ensenarColorEnIngles(); // Llama al método para mover a la siguiente ventana
+                ensenarNumeroEnIngles(); // Llama al método para mover a la siguiente ventana
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
@@ -64,7 +64,7 @@ public class CorrectoNumbers extends javax.swing.JFrame {
     }
    
     // 
-    private void ensenarColorEnIngles() {
+    private void ensenarNumeroEnIngles() {
         stopSound();
         if (cartaAleatoria == uno)
             new com.LevelThree.Respuestas_Numbers.One_english().setVisible(true);

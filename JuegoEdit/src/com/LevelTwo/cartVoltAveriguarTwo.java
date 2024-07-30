@@ -24,9 +24,10 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     private Timer countdownTimer;
     private int remainingTime = DELAY / 1000; // Tiempo restante en segundos
     
-    // para jugabilidad de adivinar
-    private JButton[] cartas;
-    private JButton cartaAleatoria;   
+   // para jugabilidad de adivinar
+    private JButton[] cartasAnimales = new JButton[4];
+    private JButton[] cartasAnimalesVolteadas;
+    private JButton cartaAleatoria; // carta para adivinar
     private boolean cartaSeleccionada = false; // Para verificar si se ha seleccionado una carta
     
     public cartVoltAveriguarTwo() {
@@ -34,7 +35,21 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
         startTimer();
         playSound(); // Reproduce el audio al iniciar
         startCountdownTimer(); // Inicia el temporizador para la cuenta regresiva
+        llenarCartasNumeros(); // llena arreglo cartasColores
         configurarCartas(); // acciones de eventos de las cartas (para adivinar)
+    }
+    
+    private void llenarCartasNumeros(){
+        String[] animales = {"Perro", "Gato", "Cerdo", "Leon"};
+        
+        // llenar el arreglo de botones de colores
+        int i = 0;
+        for (JButton cartaAnimal : cartasAnimales){
+            cartaAnimal = new JButton();
+            cartaAnimal.setIcon(new ImageIcon(getClass().getResource("/com/images/bot" + animales[i] + ".png")));
+            cartasAnimales[i] = cartaAnimal;
+            i++;
+        }
     }
     
     private void startCountdownTimer() {
@@ -73,44 +88,54 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     // añadido sistema de juego adivinar
     private void configurarCartas() {
         // arreglo de botones de animales
-        cartas = new JButton[]{botCardPerro, botCardGato, botCardCerdo, botCardLeon};
-        for (JButton carta : cartas) {
+        cartasAnimalesVolteadas = new JButton[]{botCardPerro, botCardGato, botCardCerdo, botCardLeon};
+        int aux = 1;
+        for (JButton carta : cartasAnimalesVolteadas) {
             carta.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     cartaSeleccionada = true; // una carta ha sido escogida
-                    stopSound();
                     // cada carta(boton) se verificará al ser presionada
-                    verificarAdivinanza(carta);
+                    stopSound();
+                    //verificando depende del boton clickeado
+                    if (carta == botCardPerro)
+                        verificarAdivinanza(cartasAnimales[0]);
+                    else if (carta == botCardGato)
+                        verificarAdivinanza(cartasAnimales[1]);
+                    else if (carta == botCardCerdo)
+                        verificarAdivinanza(cartasAnimales[2]);
+                    else if (carta == botCardLeon)
+                        verificarAdivinanza(cartasAnimales[3]); 
                 }
             });
+            aux++;
         }
         mostrarCartaAleatoria(); 
     }
     
     // oculta las cartas
     private void voltearCartas() { 
-        for (JButton carta : cartas) {
+        for (JButton carta : cartasAnimalesVolteadas) {
             carta.setIcon(new ImageIcon(getClass().getResource("/com/images/reversoCartas.png")));
         }
     }
     
     // carta aleatorio para ser adivinada
     private void mostrarCartaAleatoria() {
-        int indiceAleatorio = new Random().nextInt(cartas.length);
-        cartaAleatoria = cartas[indiceAleatorio];
+        int indiceAleatorio = new Random().nextInt(cartasAnimales.length);
+        cartaAleatoria = cartasAnimales[indiceAleatorio];
         
         // jLabel carta para adivinar
         String[] animales = {"Perro", "Gato", "Cerdo", "Leon"};
-        jLabel3.setIcon(new ImageIcon(getClass().getResource("/com/images/bot" + animales[indiceAleatorio] + ".png")));
+        jLabel3.setIcon(cartaAleatoria.getIcon());
     }
     
     // verificar si se escogio el animal correcto
     private void verificarAdivinanza(JButton carta) {
         if (carta == cartaAleatoria) {
-            new com.LevelTwo.AnterisTwo.CorrectoAnimals(cartaAleatoria, botCardPerro, botCardGato, botCardCerdo, botCardLeon).setVisible(true); // Abre el frame de carta correcta
+            new com.LevelTwo.AnterisTwo.CorrectoAnimals(cartaAleatoria, cartasAnimales[0], cartasAnimales[1], cartasAnimales[2], cartasAnimales[3]).setVisible(true); // Abre el frame de carta correcta
         } else {
-            new com.LevelTwo.AnterisTwo.ErrorAnimals(cartaAleatoria, botCardPerro, botCardGato, botCardCerdo, botCardLeon).setVisible(true); // Abre el frame de carta incorrecta
+            new com.LevelTwo.AnterisTwo.ErrorAnimals(cartaAleatoria, cartasAnimales[0], cartasAnimales[1], cartasAnimales[2], cartasAnimales[3]).setVisible(true); // Abre el frame de carta incorrecta
         }
         dispose(); // Cierra la ventana actual
     }
@@ -118,7 +143,7 @@ public class cartVoltAveriguarTwo extends javax.swing.JFrame {
     private void moveToNextFrame() {
         stopSound(); // Detiene el audio antes de cerrar la ventana
         dispose(); // Cierra la ventana actual
-        new com.LevelTwo.AnterisTwo.TimeAgotadoAnimals(cartaAleatoria, botCardPerro, botCardGato, botCardCerdo, botCardLeon).setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
+        new com.LevelTwo.AnterisTwo.TimeAgotadoAnimals(cartaAleatoria, cartasAnimales[0], cartasAnimales[1], cartasAnimales[2], cartasAnimales[3]).setVisible(true); // Abre la siguiente ventana (asegúrate de reemplazar NextFrame con el nombre de tu siguiente JFrame)
     }
 
     private void playSound() {

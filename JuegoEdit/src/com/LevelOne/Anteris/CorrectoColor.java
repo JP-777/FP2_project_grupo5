@@ -11,8 +11,7 @@ import javax.sound.sampled.FloatControl;
 import javax.swing.Timer;
 import javax.sound.sampled.*;
 import javax.swing.JButton;
-
-
+import javax.swing.JLabel;
 
 /**
  *
@@ -27,20 +26,21 @@ public class CorrectoColor extends javax.swing.JFrame {
     private Clip audioClip; // Variable para el audio
 
     private JButton cartaAleatoria; // Variable para almacenar la carta aleatoria de cartVoltAveriguar 
-    private JButton blue;
-    private JButton green;
     private JButton yellow;
+    private JButton blue;
     private JButton red;
+    private JButton green;
     
-    public CorrectoColor(JButton cartaAleatoria, JButton b, JButton g, JButton y, JButton r) {
+    public CorrectoColor(JButton cartaAleatoria, JButton y, JButton b, JButton r, JButton g) {
         this.cartaAleatoria = cartaAleatoria;
-        blue = b;
-        green = g;
         yellow = y;
+        blue = b;
         red = r;
+        green = g;
         
         initComponents();
         startTimer();
+        
         //playSound(); // Reproduce el audio al iniciar
         playSoundWithReducedVolume(); // Reproduce el audio al iniciar con volumen reducido
     }
@@ -63,14 +63,14 @@ public class CorrectoColor extends javax.swing.JFrame {
     // 
     private void ensenarColorEnIngles() {
         stopSound();
-        if (cartaAleatoria == blue)
+        if (cartaAleatoria == yellow)
+            new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
+        if (cartaAleatoria == blue) 
             new com.LevelOne.Respuestas.Blue_english().setVisible(true);
+        if (cartaAleatoria == red) 
+            new com.LevelOne.Respuestas.Red_english().setVisible(true);
         if (cartaAleatoria == green) 
             new com.LevelOne.Respuestas.Green_english().setVisible(true);
-        if (cartaAleatoria == yellow) 
-            new com.LevelOne.Respuestas.Red_english().setVisible(true);
-        if (cartaAleatoria == red) 
-            new com.LevelOne.Respuestas.Yellow_english().setVisible(true);
         dispose();
     }
 

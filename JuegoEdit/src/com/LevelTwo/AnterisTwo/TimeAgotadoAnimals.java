@@ -37,6 +37,9 @@ public class TimeAgotadoAnimals extends javax.swing.JFrame {
         leon = l;
         
         initComponents();
+        
+        MostrarCartaCorrecta.setIcon(cartaAleatoria.getIcon());
+                
         startTimer();
         playSound(); // Reproduce el audio al iniciar
     }

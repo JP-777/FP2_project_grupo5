@@ -37,6 +37,9 @@ public class TimeAgotadoNumbers extends javax.swing.JFrame {
         cuatro = c;
         
         initComponents();
+        
+        MostrarCartaCorrecta.setIcon(cartaAleatoria.getIcon());
+        
         startTimer();
         playSound(); // Reproduce el audio al iniciar
     }
@@ -47,7 +50,7 @@ public class TimeAgotadoNumbers extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop(); // Detiene el temporizador
-                ensenarColorEnIngles(); // Llama al método para mover a la siguiente ventana
+                ensenarNumeroEnIngles(); // Llama al método para mover a la siguiente ventana
             }
         });
         timer.setRepeats(false); // El temporizador no se repite
@@ -56,7 +59,7 @@ public class TimeAgotadoNumbers extends javax.swing.JFrame {
         
         
     // 
-    private void ensenarColorEnIngles() {
+    private void ensenarNumeroEnIngles() {
         stopSound();
         if (cartaAleatoria == uno)
             new com.LevelThree.Respuestas_Numbers.One_english().setVisible(true);
